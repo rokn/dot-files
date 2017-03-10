@@ -88,36 +88,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ls='ls --color=auto --human-readable --group-directories-first --classify'
-alias explorer='thunar'
-#alias mplayer='clementine'
-alias img='feh'
-alias m='make'
-alias c='clear'
-alias rave='rake'
-alias e='exit'
-alias :q='exit'
-alias :Q='exit'
-alias l='ls --color=auto'
-alias ..='cd ..'
-alias plgen='find -type f -iname \*.mp3 >'
-alias mirror-screen='xrandr --output HDMI-0 --auto --same-as DVI-I-1'
-alias tt-rails="tt-rails && exit"
-alias toclip="xclip -selection clipboard"
-alias vol="alsamixer"
-alias ytdl="youtube-dl --extract-audio --audio-format mp3"
-alias wttr="curl wttr.in/sofia"
-alias ga="git add -A"
-alias gc="git commit -m"
-alias gp="git push"
-alias and-mount="jmtpfs"
-alias and-unmount="fusermount -u"
-alias sp="pactl set-sink-mute 0 toggle; systemctl suspend"
-alias лс="ls"
-alias е="e"
-alias цд="cd"
-alias hac="ghc"
-alias hai="ghci"
 
 
 export GLOG_logtostderr=1
@@ -154,4 +124,4 @@ eval "$(thefuck --alias fck)"
 #
 #
 
-source  ~/.ttrc
+source ~/.aliasesrc
