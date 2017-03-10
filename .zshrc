@@ -55,7 +55,7 @@ ZSH_THEME="powerline"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rails ruby archlinux aws dirhistory pip python web-search wd)
+plugins=(git rails ruby debian aws dirhistory pip python wd)
 autoload zmv
 
 source $ZSH/oh-my-zsh.sh
@@ -107,14 +107,51 @@ alias toclip="xclip -selection clipboard"
 alias vol="alsamixer"
 alias ytdl="youtube-dl --extract-audio --audio-format mp3"
 alias wttr="curl wttr.in/sofia"
+alias ga="git add -A"
+alias gc="git commit -m"
+alias gp="git push"
+alias and-mount="jmtpfs"
+alias and-unmount="fusermount -u"
+alias sp="pactl set-sink-mute 0 toggle; systemctl suspend"
+alias лс="ls"
+alias е="e"
+alias цд="cd"
+alias hac="ghc"
+alias hai="ghci"
 
-export PATH="$HOME/.local/bin/:/usr/class/cs143/cool/bin:${PATH}:$HOME/.rvm/bin"
 
 export GLOG_logtostderr=1
 
 export EDITOR="vim"
+export BROWSER="/bin/google-chrome-stable"
+export JAVA_HOME="/home/rokner/Downloads/eclipse/jdk1.8.0_101"
+export GRADLE_HOME="/home/rokner/Downloads/gradle-3.2"
+export IDEA_HOME="/home/rokner/Downloads/idea-IU-162.2228.15"
+export PYTHONSTARTUP="/home/rokner/.pythonrc"
+export QT_HOME="/home/rokner/Qt/5.7/gcc_64"
 
-setxkbmap -option grp:alt_shift_toggle,grp_led:scroll us,bg -variant ,phonetic
-#eval "$(thefuck --alias fck)"
+export PATH="$HOME/.local/bin/:/usr/class/cs143/cool/bin:${PATH}:$HOME/.rvm/bin:$JAVA_HOME/bin:$GRADLE_HOME/bin:$IDEA_HOME/bin:$QT_HOME/bin"
 
+# added by Anaconda3 4.3.0 installer
+export PATH="/home/rokner/libraries/anaconda3/bin:$PATH"
+
+eval "$(jump shell zsh)"
+#fancy ctrl z for vim
+fancy-ctrl-z () {
+  if [[ $#BUFFER -eq 0 ]]; then
+    BUFFER="fg"
+    zle accept-line
+  else
+    zle push-input
+    zle clear-screen
+  fi
+}
+zle -N fancy-ctrl-z
+bindkey '^Z' fancy-ctrl-z
+
+eval "$(thefuck --alias fck)"
 ##. /home/rokner/torch/install/bin/torch-activate
+#
+#
+
+source  ~/.ttrc

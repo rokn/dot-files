@@ -36,7 +36,6 @@ setlocal noexpandtab
 if &filetype != 'conf'
 setlocal filetype=conf
 endif
-setlocal fixendofline
 setlocal foldcolumn=0
 setlocal foldenable
 setlocal foldexpr=0
@@ -51,8 +50,8 @@ setlocal formatexpr=
 setlocal formatoptions=croql
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
 setlocal grepprg=
-setlocal iminsert=2
-setlocal imsearch=2
+setlocal iminsert=0
+setlocal imsearch=0
 setlocal include=
 setlocal includeexpr=
 setlocal indentexpr=
@@ -68,7 +67,7 @@ setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
 setlocal modeline
 setlocal modifiable
-setlocal nrformats=bin,octal,hex
+setlocal nrformats=octal,hex
 setlocal number
 setlocal numberwidth=4
 setlocal omnifunc=
@@ -83,7 +82,6 @@ setlocal rightleftcmd=search
 setlocal noscrollbind
 setlocal shiftwidth=4
 setlocal noshortname
-setlocal signcolumn=auto
 setlocal nosmartindent
 setlocal softtabstop=0
 setlocal nospell
@@ -98,7 +96,6 @@ if &syntax != 'conf'
 setlocal syntax=conf
 endif
 setlocal tabstop=4
-setlocal tagcase=
 setlocal tags=
 setlocal textwidth=0
 setlocal thesaurus=
@@ -108,12 +105,12 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 170 - ((33 * winheight(0) + 19) / 39)
+let s:l = 193 - ((31 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-170
-normal! 08|
+193
+normal! 067|
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
 " vim: set ft=vim :

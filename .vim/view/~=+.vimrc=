@@ -48,7 +48,6 @@ setlocal noexpandtab
 if &filetype != 'vim'
 setlocal filetype=vim
 endif
-setlocal fixendofline
 setlocal foldcolumn=0
 setlocal foldenable
 setlocal foldexpr=0
@@ -63,8 +62,8 @@ setlocal formatexpr=
 setlocal formatoptions=tcq
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
 setlocal grepprg=
-setlocal iminsert=2
-setlocal imsearch=2
+setlocal iminsert=0
+setlocal imsearch=0
 setlocal include=
 setlocal includeexpr=
 setlocal indentexpr=GetVimIndent()
@@ -80,7 +79,7 @@ setlocal makeprg=
 setlocal matchpairs=(:),{:},[:]
 setlocal modeline
 setlocal modifiable
-setlocal nrformats=bin,octal,hex
+setlocal nrformats=octal,hex
 setlocal number
 setlocal numberwidth=4
 setlocal omnifunc=
@@ -95,14 +94,13 @@ setlocal rightleftcmd=search
 setlocal noscrollbind
 setlocal shiftwidth=4
 setlocal noshortname
-setlocal signcolumn=auto
 setlocal nosmartindent
 setlocal softtabstop=0
 setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en
-setlocal statusline=%!airline#statusline(2)
+setlocal statusline=%!airline#statusline(1)
 setlocal suffixesadd=
 setlocal swapfile
 setlocal synmaxcol=3000
@@ -110,7 +108,6 @@ if &syntax != 'vim'
 setlocal syntax=vim
 endif
 setlocal tabstop=4
-setlocal tagcase=
 setlocal tags=
 setlocal textwidth=78
 setlocal thesaurus=
@@ -120,11 +117,11 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 87 - ((36 * winheight(0) + 18) / 37)
+let s:l = 153 - ((43 * winheight(0) + 24) / 49)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-87
+153
 normal! 0
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost

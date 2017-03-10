@@ -77,7 +77,7 @@ setlocal nopreserveindent
 setlocal nopreviewwindow
 setlocal quoteescape=\\
 setlocal noreadonly
-setlocal norelativenumber
+setlocal relativenumber
 setlocal norightleft
 setlocal rightleftcmd=search
 setlocal noscrollbind
@@ -110,12 +110,14 @@ setlocal wrap
 setlocal wrapmargin=0
 5
 normal! zo
-let s:l = 42 - ((12 * winheight(0) + 18) / 36)
+24
+normal! zo
+let s:l = 37 - ((17 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-42
-normal! 0
+37
+normal! 030|
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
 " vim: set ft=vim :
