@@ -1,0 +1,33 @@
+#!/bin/bash
+#Launcher for the Linux version of RimWorld
+
+# cd into the directory containing this script
+SCRIPT=$(readlink -f "$0")
+DIR="/home/rokner/Downloads/RimWorldAlpha15b.DRM.Free/RimWorld1280Linux/"
+cd "$DIR"
+
+#Getting game executable name.
+GAMEFILE=`ls | egrep x86$`
+
+#Checking if OS is 32 or 64 bits and adjusting the game executable name accordingly.
+OSVERSION=`uname -m`
+if [[ $OSVERSION == "x86_64" ]]
+    then GAMEFILE=${GAMEFILE}_64
+fi
+
+#Puts the game executable as... executable if not the case.
+if [ ! -x $GAMEFILE ]
+    then chmod +x $GAMEFILE
+fi
+
+#If this is a dev version, we want to activate logs.
+#if [[ $GAMEFILE == *Dev* ]]
+#    then LOG="-logfile /tmp/rimworld_log"
+#    else LOG=""
+#fi
+
+#We always want to activate logs
+LOG="-logfile /tmp/rimworld_log"
+
+#Locale resetting (important for Ubuntu players who are not native speakers of English) and launching the game.
+LC_ALL=C ./$GAMEFILE $LOG

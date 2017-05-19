@@ -1,0 +1,3 @@
+#!/bin/sh
+cd ~/tt/
+cloc VeDe/ VeDe-Graphics/ --exclude-ext=hpp --exclude-lang=make,IDL,Bourne\ Again\ Shell

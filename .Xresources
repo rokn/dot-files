@@ -1,0 +1,21 @@
+! Enable the extended coloring options
+rofi.color-enabled: true
+!                  bg         border   separator
+rofi.color-window: #cc2f343f, #a89984, #a89984
+!                  bg         fg       bg-alt   hl-bg    hl-fg
+rofi.color-normal: #cc1c1f26, #f3f4f5, #cc32302f, #665c54, #fbf1c7
+rofi.color-active: #cc2f343f, #f3f4f5, #ccd79921, #fabd2f, #282828
+rofi.color-urgent: #ccFFFFFF, #282828, #cccc241d, #fb4934, #282828
+
+rofi.separator-style: solid
+rofi.sidebar-mode: true
+rofi.bw: 1
+rofi.columns: 1
+rofi.padding: 350
+
+rofi.yoffset: 0
+rofi.fake-transparency: false
+rofi.location: 0
+rofi.width: 100
+rofi.lines: 5
+rofi.fixed-num-lines: true

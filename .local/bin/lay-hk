@@ -1,0 +1,2 @@
+#!/bin/sh
+setxkbmap -option grp:shifts_toggle,grp_led:scroll us,bg -variant ,phonetic

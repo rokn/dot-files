@@ -1,0 +1,6 @@
+#!/bin/bash
+
+net-turnoff
+ip link set wlp2s0 up
+iw dev wlp2s0 connect TP-LINK_1D1E0C key 0:9638527410
+dhcpcd wlp2s0

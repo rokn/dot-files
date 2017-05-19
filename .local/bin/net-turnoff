@@ -1,0 +1,5 @@
+#!/bin/bash
+
+dhcpcd -k wlp2s0
+iw dev wlp2s0 disconnect
+ip link set wlp2s0 down
