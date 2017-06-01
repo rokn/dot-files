@@ -11,7 +11,7 @@
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 9
+font pango:Meslo LG M DZ for Powerline 9
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -31,156 +31,201 @@ set $down j
 set $left h
 set $right l
 
+set $mod Mod4
+
 # use Mouse+Mod4 to drag floating windows to their wanted position
-floating_modifier Mod4
+floating_modifier $mod
 
 # start a terminal
-bindsym Mod4+Return exec i3-sensible-terminal
+bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym Mod1+F4 kill
-bindsym Mod4+Shift+Q kill
+bindsym $mod+Shift+Q kill
 
 # start dmenu (a program launcher)
-bindsym Mod4+d exec dmenu_run
+#bindsym Mod1+space exec i3-dmenu-desktop --dmenu='rofi -dmenu -lines 5 -eh 2 -width 100 -padding 400 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "Meslo LG M DZ for Powerline 18"'
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym Mod4+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym Mod4+$left focus left
-bindsym Mod4+$down focus down
-bindsym Mod4+$up focus up
-bindsym Mod4+$right focus right
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
 
 # alternatively, you can use the cursor keys:
-bindsym Mod4+Left focus left
-bindsym Mod4+Down focus down
-bindsym Mod4+Up focus up
-bindsym Mod4+Right focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
 
 # move focused window
-bindsym Mod4+Shift+$left move left
-bindsym Mod4+Shift+$down move down
-bindsym Mod4+Shift+$up move up
-bindsym Mod4+Shift+$right move right
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
 
 # set force update macro
 set $update exec --no-startup-id killall -USR1 i3status
 
 # alternatively, you can use the cursor keys:
-bindsym Mod4+Shift+Left move left
-bindsym Mod4+Shift+Down move down
-bindsym Mod4+Shift+Up move up
-bindsym Mod4+Shift+Right move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym Mod4+o split h
+bindsym $mod+o split h
 
 # split in vertical orientation
-bindsym Mod4+v split v
+bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym Mod4+f fullscreen toggle
+bindsym $mod+f fullscreen toggle
 
 # pulseaudio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 -- +5%; $update
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -- -5%; $update
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle; $update
 
+#Media player control
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+#bindsym XF86AudioPause exec --no-startup-id playerctl pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym Mod4+s layout stacking
-bindsym Mod4+w layout tabbed
-bindsym Mod4+e layout toggle split
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym Mod4+Shift+space floating toggle
+bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym Mod4+space focus mode_toggle
+bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym Mod4+a focus parent
+bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym Mod4+d focus child
+bindsym $mod+d focus child
 
 # move the currently focused window to the scratchpad
-bindsym Mod4+Shift+minus move scratchpad
+bindsym $mod+Shift+minus move scratchpad
 
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
-bindsym Mod4+minus scratchpad show
+bindsym $mod+minus scratchpad show
+
+# Workspaces
+set $worksp_1_term "1: Terminals "
+set $worksp_2_chrome "2: Chrome "
+set $worksp_3_work "3: Code "
+set $worksp_4_altwork "4: Alt Work "
+set $worksp_9_torrents "9: Torrents "
+set $worksp_10_music "10: Music "
 
 # switch to workspace
-bindsym Mod4+1 workspace 1
-bindsym Mod4+2 workspace 2
-bindsym Mod4+3 workspace 3
-bindsym Mod4+4 workspace 4
-bindsym Mod4+5 workspace 5
-bindsym Mod4+6 workspace 6
-bindsym Mod4+7 workspace 7
-bindsym Mod4+8 workspace 8
-bindsym Mod4+9 workspace 9
-bindsym Mod4+0 workspace 10
+bindsym $mod+1 workspace $worksp_1_term
+bindsym $mod+2 workspace $worksp_2_chrome
+bindsym $mod+3 workspace $worksp_3_work
+bindsym $mod+4 workspace $worksp_4_altwork
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace $worksp_9_torrents
+bindsym $mod+0 workspace $worksp_10_music
 
 # move focused container to workspace
-bindsym Mod4+Shift+1 move container to workspace 1
-bindsym Mod4+Shift+2 move container to workspace 2
-bindsym Mod4+Shift+3 move container to workspace 3
-bindsym Mod4+Shift+4 move container to workspace 4
-bindsym Mod4+Shift+5 move container to workspace 5
-bindsym Mod4+Shift+6 move container to workspace 6
-bindsym Mod4+Shift+7 move container to workspace 7
-bindsym Mod4+Shift+8 move container to workspace 8
-bindsym Mod4+Shift+9 move container to workspace 9
-bindsym Mod4+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace $worksp_1_term
+bindsym $mod+Shift+2 move container to workspace $worksp_2_chrome
+bindsym $mod+Shift+3 move container to workspace $worksp_3_work
+bindsym $mod+Shift+4 move container to workspace $worksp_4_altwork
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace $worksp_9_torrents
+bindsym $mod+Shift+0 move container to workspace $worksp_10_music
+
+#Move Workspaces to window
+bindsym $mod+Mod1+h move workspace to output left
+bindsym $mod+Mod1+left move workspace to output left
+bindsym $mod+Mod1+l move workspace to output right
+bindsym $mod+Mod1+right move workspace to output right
+
+#Assign windows
+for_window [class="Spotify"] move to workspace $worksp_10_music
+assign [class="Google-chrome"] $worksp_2_chrome
+assign [class="Deluge"] $worksp_9_torrents
 
 # reload the configuration file
-bindsym Mod4+Shift+c reload
+bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym Mod4+Shift+r restart
+bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym Mod4+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+# These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym $left       resize shrink width 10 px or 10 ppt
-        bindsym $down       resize grow height 10 px or 10 ppt
-        bindsym $up         resize shrink height 10 px or 10 ppt
-        bindsym $right      resize grow width 10 px or 10 ppt
+# Pressing left will shrink the window’s width.
+# Pressing right will grow the window’s width.
+# Pressing up will shrink the window’s height.
+# Pressing down will grow the window’s height.
+	bindsym $left       resize shrink width 10 px or 10 ppt
+		bindsym $down       resize grow height 10 px or 10 ppt
+		bindsym $up         resize shrink height 10 px or 10 ppt
+		bindsym $right      resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left        resize shrink width 10 px or 10 ppt
-        bindsym Down        resize grow height 10 px or 10 ppt
-        bindsym Up          resize shrink height 10 px or 10 ppt
-        bindsym Right       resize grow width 10 px or 10 ppt
+# same bindings, but for the arrow keys
+		bindsym Left        resize shrink width 10 px or 10 ppt
+		bindsym Down        resize grow height 10 px or 10 ppt
+		bindsym Up          resize shrink height 10 px or 10 ppt
+		bindsym Right       resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+# back to normal: Enter or Escape
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
 }
 
-bindsym Mod4+r mode "resize"
+bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
+set $bg-color 	         #2f343f
+set $inactive-bg-color   #181b21
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #E53935
 
-        mode hide
-        hidden_state hide
-        modifier Mod4
+# window colors
+#                       border              background         text                 indicator
+client.focused          $bg-color           $bg-color          $text-color          #00ff00
+client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
+client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+
+# bar
+bar {
+	status_command i3blocks -c /home/rokner/.i3/i3blocks.conf
+		colors {
+			background $bg-color
+				separator #757575
+#                  border             background         text
+				focused_workspace  $bg-color          $bg-color          $text-color
+				inactive_workspace $bg-color 		  $bg-color          $inactive-text-color
+				urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+		}
 }
 
 # Startup applications
@@ -188,9 +233,72 @@ exec kupfer
 exec fluxgui
 exec compton -b --config ~/.config/compton.conf
 exec --no-startup-id nm-applet
-#bindsym Mod1+Shift 
+exec spotify
+exec_always --no-startup-id feh --bg-scale ~/Wallpapers/space.png
+#bindsym Mod1+Shift
 # Lockscreen
-bindsym Mod4+Shift+g exec --no-startup-id i3lock -i ~/lock-back.png
+#
+bindsym $mod+Shift+Escape exec --no-startup-id ~/.i3/i3lock-fancy-multimonitor/lock
 #set $lockscreen exec --no-startup-id i3lock -i ~/Wallpapers/Wallpaper -e -f
 #bindsym XF86ScreenSaver $lockscreen
 #bindsym Mod4+Escape     $lockscreen
+
+### i3-gaps stuff ###
+
+# Necessary for i3-gaps to work properly (pixel can be any value)
+for_window [class="^.*"] border pixel 4
+for_window [class="Kupfer.py"] border pixel 0
+
+# Smart Gaps
+smart_gaps on
+
+# Smart Borders
+smart_borders on
+
+# Some color adjustments
+#client.focused_inactive #000000 #000000 #000000 #000000 #000000
+#client.unfocused        #000000 #000000 #000000 #000000 #000000
+
+# Set inner/outer gaps
+gaps inner 12
+gaps outer -2
+
+# Gaps mode
+	set $mode_gaps Gaps: (o) outer, (i) inner
+	set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+	bindsym $mod+Shift+g mode "$mode_gaps"
+
+	mode "$mode_gaps" {
+		bindsym o      mode "$mode_gaps_outer"
+			bindsym i      mode "$mode_gaps_inner"
+			bindsym Return mode "default"
+			bindsym Escape mode "default"
+	}
+
+mode "$mode_gaps_inner" {
+	bindsym plus  gaps inner current plus 5
+		bindsym minus gaps inner current minus 5
+		bindsym 0     gaps inner current set 0
+
+		bindsym Shift+plus  gaps inner all plus 5
+		bindsym Shift+minus gaps inner all minus 5
+		bindsym Shift+0     gaps inner all set 0
+
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_outer" {
+	bindsym plus  gaps outer current plus 5
+		bindsym minus gaps outer current minus 5
+		bindsym 0     gaps outer current set 0
+
+		bindsym Shift+plus  gaps outer all plus 5
+		bindsym Shift+minus gaps outer all minus 5
+		bindsym Shift+0     gaps outer all set 0
+
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
+}
+

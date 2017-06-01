@@ -8,7 +8,7 @@ call vundle#begin()
 "" alternatively, pass a path where Vundle should install plugins
 ""call vundle#begin('~/some/path/here')
 
-let g:ycm_confirm_extra_conf = 0 
+let g:ycm_confirm_extra_conf = 0
 
 "" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
@@ -39,25 +39,73 @@ filetype plugin indent on    " required
 "autocmd vimenter * NERDTree
 "autocmd vimenter * NERDTreeTabsOpen
 autocmd InsertLeave * write
-"
+au FocusLost * :wa
+
+"Set mapleader to something reasonable(space)
 let mapleader = " "
-"
-set foldmethod=syntax
-"
+
+"Quick Edit vimrc
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
+set hidden "Hide buffers
+set tabstop=4 "Tab = 4 spaces
+se foldmethod=syntax
 set autoindent
-set smartcase
+set copyindent
 set autowrite
-set tabstop=4
 set number
 set wrapscan
 set shiftwidth=4
+set smarttab
 set foldlevelstart=20
 set pastetoggle=<F2>
 set relativenumber
+set scrolloff=5
+set modelines=0
+set laststatus=2
+set undofile
 
+set history=1000
+set undolevels=1000
+set wildignore=*.swp,*.bak,*.pyc,*.class
+set title
+
+"Themes
 set background=dark
+"colorscheme molokai
 colorscheme molokai
 syntax enable
+
+set list
+set listchars=tab:\ \ ,trail:-,nbsp:-
+
+"Umm...
+set mouse=a
+
+"Fast scroll
+"nnoremap <C-e> 2<C-e>
+"nnoremap <C-y> 2<C-y>
+
+"Searching
+nmap <silent> <leader>/ :nohlsearch<CR>
+nnoremap / /\v
+vnoremap / /\v
+set gdefault
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+nnoremap <tab> %
+vnoremap <tab> %
+
+"Long lines
+nnoremap j gj
+nnoremap k gk
+set wrap
+set textwidth=79
+set formatoptions=qrn1
+set colorcolumn=85
 
 set completeopt-=preview
 set directory^=$HOME/.vim/tmp//
@@ -96,7 +144,6 @@ let g:airline_symbols.space = "\ua0"
 "
 "f/t ignore case
 let g:fanfingtastic_ignorecase = 1
-
 map <F5> :make run<CR>
 map <F7> :make<CR>
 map <F9> :YcmCompleter FixIt<CR>
@@ -105,7 +152,7 @@ map <S-F12> :A<CR>
 
 map <leader>; <plug>NERDTreeTabsToggle<CR>
 
-"Delete to the void 
+"Delete to the void
 map <leader>d "_dd
 map <Space>d "_dd
 
@@ -116,8 +163,8 @@ nmap <CR> o<Esc>
 " The holy one
 imap jj <ESC>
 
-noremap <leader>s :w<CR>
-noremap <Space>s :w<CR>
+noremap <leader>w :w<CR>
+noremap <Space>w :w<CR>
 noremap <leader>q :q<CR>
 noremap <Space>q :q<CR>
 
@@ -141,6 +188,19 @@ vmap <Space>p "+p
 vmap <Leader>P "+Po clipboard:
 vmap <Space>P "+Po clipboard:
 
+noremap <c-h> <c-w>h
+noremap <c-k> <c-w>k
+noremap <c-j> <c-w>j
+noremap <c-l> <c-w>l
+
+" Remember info about open buffers on close
+set viminfo^=%
+
+" Open window splits in various places
+nmap <leader>sh :leftabove  vnew<CR>
+nmap <leader>sl :rightbelow vnew<CR>
+nmap <leader>sk :leftabove  new<CR>
+nmap <leader>sj :rightbelow new<CR>
 " Allow saving of files as sudo when I forgot to start vim using sudo
 cmap w!! w !sudo tee > /dev/null %
 
