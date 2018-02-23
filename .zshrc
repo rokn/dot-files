@@ -55,7 +55,7 @@ ZSH_THEME="powerline"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rails ruby debian aws dirhistory pip python wd)
+plugins=(git debian aws pip python)
 autoload zmv
 
 source $ZSH/oh-my-zsh.sh
@@ -99,13 +99,15 @@ export GRADLE_HOME="/home/rokner/Downloads/gradle-3.2"
 export IDEA_HOME="/home/rokner/Downloads/idea-IU-162.2228.15"
 export PYTHONSTARTUP="/home/rokner/.pythonrc"
 export QT_HOME="/home/rokner/Qt/5.7/gcc_64"
+export NG_HOME="/home/rokner/Documents/"
+export CONDA_HOME="/home/rokner/anaconda3"
 
-export PATH="$HOME/.local/bin/:/usr/class/cs143/cool/bin:${PATH}:$HOME/.rvm/bin:$JAVA_HOME/bin:$GRADLE_HOME/bin:$IDEA_HOME/bin:$QT_HOME/bin"
 
-# added by Anaconda3 4.3.0 installer
-export PATH="/home/rokner/libraries/anaconda3/bin:$PATH"
+#export PYTHONPATH="/home/rokner/anaconda3/lib/python3.6/site-packages":$PYTHONPATH
 
-eval "$(jump shell zsh)"
+export PATH="$HOME/.local/bin/:/usr/class/cs143/cool/bin:${PATH}:$HOME/.rvm/bin:$JAVA_HOME/bin:$GRADLE_HOME/bin:$IDEA_HOME/bin:$QT_HOME/bin:$CONDA_HOME/bin"
+
+. /usr/share/autojump/autojump.sh
 #fancy ctrl z for vim
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then
@@ -119,9 +121,11 @@ fancy-ctrl-z () {
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
-eval "$(thefuck --alias fck)"
+#eval "$(thefuck --alias fck)"
 ##. /home/rokner/torch/install/bin/torch-activate
 #
 #
+
+export TF_CPP_MIN_LOG_LEVEL='2'
 
 source ~/.aliasesrc

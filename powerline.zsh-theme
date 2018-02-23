@@ -13,7 +13,7 @@ fi
 if [ "$POWERLINE_RIGHT_A" = "mixed" ]; then
   POWERLINE_RIGHT_A=%(?."$POWERLINE_DATE_FORMAT".%F{red}✘ %?)
 elif [ "$POWERLINE_RIGHT_A" = "exit-status" ]; then
-  POWERLINE_RIGHT_A=%(?.%F{green}✔ %?.%F{red}✘ %?)
+  POWERLINE_RIGHT_A=%(?.$FG[238]✔ %?.%F{red}✘ %?)
 elif [ "$POWERLINE_RIGHT_A" = "exit-status-on-fail" ]; then
   POWERLINE_RIGHT_A=%(?..%F{red}✘ %?)
 elif [ "$POWERLINE_RIGHT_A" = "date" ]; then
@@ -117,9 +117,9 @@ ZSH_THEME_GIT_PROMPT_DIVERGED=" ⬍"
     else
         POWERLINE_GIT_INFO_LEFT=""
         if [ "$POWERLINE_HIDE_GIT_PROMPT_STATUS" = "" ]; then
-            POWERLINE_GIT_INFO_RIGHT="%F{green}"$'\ue0b2'"%F{black}%K{green}"$'$(git_prompt_info)$(git_prompt_status)'" %K{green}"
+            POWERLINE_GIT_INFO_RIGHT="$FG[238]"$'\ue0b2'"%F{black}$BG[238]"$'$(git_prompt_info)$(git_prompt_status)'" $BG[238]"
         else
-            POWERLINE_GIT_INFO_RIGHT="%F{green}"$'\ue0b2'"%F{black}%K{green}"$'$(git_prompt_info)'" %K{green}"
+            POWERLINE_GIT_INFO_RIGHT="$FG[238]"$'\ue0b2'"%F{black}$BG[238]"$'$(git_prompt_info)'" $BG[238]"
         fi
     fi
 # fi
@@ -128,8 +128,8 @@ if [ $(id -u) -eq 0 ]; then
     POWERLINE_SEC1_BG=%K{red}
     POWERLINE_SEC1_FG=%F{red}
 else
-    POWERLINE_SEC1_BG=%K{green}
-    POWERLINE_SEC1_FG=%F{green}
+    POWERLINE_SEC1_BG=$BG[238]
+    POWERLINE_SEC1_FG=$FG[238]
 fi
 POWERLINE_SEC1_TXT=%F{black}
 if [ "$POWERLINE_DETECT_SSH" != "" ]; then
@@ -148,10 +148,10 @@ fi
 
 if [ "$POWERLINE_DISABLE_RPROMPT" = "" ]; then
     if [ "$POWERLINE_RIGHT_A" = "" ]; then
-        RPROMPT="$POWERLINE_GIT_INFO_RIGHT%F{green}"$'\ue0b2'"%k%F{black}%K{green} $POWERLINE_RIGHT_B %f%k"
+        RPROMPT="$POWERLINE_GIT_INFO_RIGHT$POWERLINE_SEC1_FG"$'\ue0b2'"%k%F{black}$POWERLINE_SEC1_BG $POWERLINE_RIGHT_B %f%k"
     elif [ "$POWERLINE_RIGHT_B" = "" ]; then
-        RPROMPT="$POWERLINE_GIT_INFO_RIGHT%F{green}"$'\ue0b2'"%k%F{$POWERLINE_RIGHT_A_COLOR_FRONT}%K{$POWERLINE_RIGHT_A_COLOR_BACK} $POWERLINE_RIGHT_A %f%k"
+        RPROMPT="$POWERLINE_GIT_INFO_RIGHT$POWERLINE_SEC1_FG"$'\ue0b2'"%k%F{$POWERLINE_RIGHT_A_COLOR_FRONT}%K{$POWERLINE_RIGHT_A_COLOR_BACK} $POWERLINE_RIGHT_A %f%k"
     else
-        RPROMPT="$POWERLINE_GIT_INFO_RIGHT%F{green}"$'\ue0b2'"%k%F{black}%K{green} $POWERLINE_RIGHT_B %f%F{$POWERLINE_RIGHT_A_COLOR_BACK}"$'\ue0b2'"%f%k%K{$POWERLINE_RIGHT_A_COLOR_BACK}%F{$POWERLINE_RIGHT_A_COLOR_FRONT} $POWERLINE_RIGHT_A %f%k"
+        RPROMPT="$POWERLINE_GIT_INFO_RIGHT$POWERLINE_SEC1_FG"$'\ue0b2'"%k%F{black}$POWERLINE_SEC1_BG $POWERLINE_RIGHT_B %f%F{$POWERLINE_RIGHT_A_COLOR_BACK}"$'\ue0b2'"%f%k%K{$POWERLINE_RIGHT_A_COLOR_BACK}%F{$POWERLINE_RIGHT_A_COLOR_FRONT} $POWERLINE_RIGHT_A %f%k"
     fi
 fi

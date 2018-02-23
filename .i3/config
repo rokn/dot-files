@@ -1,31 +1,7 @@
 # i3 config file (v4)
-#
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
-#
-# This config file uses keycodes (bindsym) and was written for the QWERTY
-# layout.
-#
-# To get a config file with the same key positions, but for your current
-# layout, use the i3-config-wizard
-#
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-font pango:Meslo LG M DZ for Powerline 9
+# _________________ VARIABLES _________________
 
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
-
-# use these keys for focus, movement, and resize directions when reaching for
-# the arrows is not convenient
 set $up k
 set $down j
 set $left h
@@ -33,15 +9,33 @@ set $right l
 
 set $mod Mod4
 
-# use Mouse+Mod4 to drag floating windows to their wanted position
+# Workspaces
+set $worksp_1_term "1 "
+set $worksp_2_chrome "2 "
+set $worksp_3_work "3 "
+set $worksp_4_altwork "4 "
+set $worksp_9_torrents "9 "
+set $worksp_10_music "10 "
+
+# set force update macro
+set $update exec --no-startup-id killall -USR1 i3status # ?? 
+
+# _________________ VARIABLES END _________________
+
+
+
+# _________________ OPTIONS _________________
+
+font pango:SauceCodePro Nerd Font Medium 9
+
+# Drag windows with mouse
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+# _________________ OPTIONS END _________________
 
-# kill focused window
-bindsym Mod1+F4 kill
-bindsym $mod+Shift+Q kill
+
+
+# _________________ SHORTCUTS _________________
 
 # start dmenu (a program launcher)
 #bindsym Mod1+space exec i3-dmenu-desktop --dmenu='rofi -dmenu -lines 5 -eh 2 -width 100 -padding 400 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "Meslo LG M DZ for Powerline 18"'
@@ -49,6 +43,14 @@ bindsym $mod+Shift+Q kill
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym Mod4+d exec --no-startup-id i3-dmenu-desktop
+
+# start a terminal
+bindsym $mod+Return exec gnome-terminal
+
+# kill focused window
+bindsym Mod1+F4 kill
+bindsym $mod+Shift+Q kill
+bindsym --whole-window $mod+button2 kill
 
 # change focus
 bindsym $mod+$left focus left
@@ -68,14 +70,15 @@ bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
 
-# set force update macro
-set $update exec --no-startup-id killall -USR1 i3status
-
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+
+# alternatively, you can use the mouse back/forward buttons
+bindsym --whole-window $mod+button8 move left
+bindsym --whole-window $mod+button9 move right
 
 # split in horizontal orientation
 bindsym $mod+o split h
@@ -87,9 +90,9 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # pulseaudio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 -- +5%; $update
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -- -5%; $update
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle; $update
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +10%;
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -10%;
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle;
 
 #Media player control
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
@@ -124,14 +127,6 @@ bindsym $mod+Shift+minus move scratchpad
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
 
-# Workspaces
-set $worksp_1_term "1: Terminals "
-set $worksp_2_chrome "2: Chrome "
-set $worksp_3_work "3: Code "
-set $worksp_4_altwork "4: Alt Work "
-set $worksp_9_torrents "9: Torrents "
-set $worksp_10_music "10: Music "
-
 # switch to workspace
 bindsym $mod+1 workspace $worksp_1_term
 bindsym $mod+2 workspace $worksp_2_chrome
@@ -158,14 +153,31 @@ bindsym $mod+Shift+0 move container to workspace $worksp_10_music
 
 #Move Workspaces to window
 bindsym $mod+Mod1+h move workspace to output left
-bindsym $mod+Mod1+left move workspace to output left
+bindsym $mod+Mod1+Left move workspace to output left
 bindsym $mod+Mod1+l move workspace to output right
-bindsym $mod+Mod1+right move workspace to output right
+bindsym $mod+Mod1+Right move workspace to output right
+
+#Move workspaces left and right
+bindsym $mod+Ctrl+h workspace prev_on_output
+bindsym $mod+Ctrl+Left workspace prev_on_output
+bindsym $mod+Ctrl+l workspace next_on_output
+bindsym $mod+Ctrl+Right workspace next_on_output
+
+# _________________ SHORTCUTS END _________________
+
+
+
 
 #Assign windows
 for_window [class="Spotify"] move to workspace $worksp_10_music
 assign [class="Google-chrome"] $worksp_2_chrome
 assign [class="Deluge"] $worksp_9_torrents
+
+for_window [class="App"] floating enable
+for_window [class="Octave"] floating enable
+for_window [class="FGL"] floating enable
+
+bindsym $mod+Shift+s exec "pactl set-sink-volume 0 0;systemctl suspend"
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -202,39 +214,46 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-set $bg-color 	         #2f343f
-set $inactive-bg-color   #181b21
+set $bg-color 	         #333333DD
+set $inactive-bg-color   #222222DD
 set $text-color          #f3f4f5
 set $inactive-text-color #676E7D
 set $urgent-bg-color     #E53935
 
 # window colors
 #                       border              background         text                 indicator
-client.focused          $bg-color           $bg-color          $text-color          #00ff00
-client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
-client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
-client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+client.focused          $bg-color           $bg-color          $text-color          $bg-color
+client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color $inactive-bg-color
+client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color $inactive-bg-color
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $urgent-bg-color
 
 # bar
-bar {
-	status_command i3blocks -c /home/rokner/.i3/i3blocks.conf
-		colors {
-			background $bg-color
-				separator #757575
-#                  border             background         text
-				focused_workspace  $bg-color          $bg-color          $text-color
-				inactive_workspace $bg-color 		  $bg-color          $inactive-text-color
-				urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-		}
-}
+#bar {
+	#status_command i3blocks -c /home/rokner/.i3/i3blocks.conf
+		#colors {
+			#background $bg-color
+				#separator #757575
+##                  border             background         text
+				#focused_workspace  $bg-color          $bg-color          $text-color
+				#inactive_workspace $bg-color 		  $bg-color          $inactive-text-color
+				#urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+		#}
+#}
 
 # Startup applications
-exec kupfer
-exec fluxgui
-exec compton -b --config ~/.config/compton.conf
+exec kupfer --no-splash
+exec_always --no-startup-id compton --config ~/.config/compton.conf
 exec --no-startup-id nm-applet
 exec spotify
-exec_always --no-startup-id feh --bg-scale ~/Wallpapers/space.png
+exec_always --no-startup-id ~/.local/bin/lay-hk
+exec --no-startup-id ~/.local/bin/mon-home; ~/.local/bin/fancypaper; sleep 5;
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always redshift -O 3000
+#exec_always sleep 2
+#exec_always --no-startup-id
+exec parcellite
+#exec -no-startup-id polybar main
+#exec -no-startup-id polybar extra
 #bindsym Mod1+Shift
 # Lockscreen
 #
@@ -248,6 +267,7 @@ bindsym $mod+Shift+Escape exec --no-startup-id ~/.i3/i3lock-fancy-multimonitor/l
 # Necessary for i3-gaps to work properly (pixel can be any value)
 for_window [class="^.*"] border pixel 4
 for_window [class="Kupfer.py"] border pixel 0
+for_window [class="Google-chrome"] border pixel 0
 
 # Smart Gaps
 smart_gaps on
@@ -266,7 +286,7 @@ gaps outer -2
 # Gaps mode
 	set $mode_gaps Gaps: (o) outer, (i) inner
 	set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+	set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
 	bindsym $mod+Shift+g mode "$mode_gaps"
 
 	mode "$mode_gaps" {
@@ -302,3 +322,19 @@ mode "$mode_gaps_outer" {
 		bindsym Escape mode "default"
 }
 
+#Custom shortcuts
+
+#Screenshots
+
+exec gnome-settings-daemon &
+bindsym --release Print exec gnome-screenshot -a -c
+bindsym --release Shift+Print exec gnome-screenshot -i
+
+workspace_auto_back_and_forth yes
+
+bindsym $mod+Prior exec ~/.local/bin/mon-home;sleep 5;~/.local/bin/fancypaper
+bindsym $mod+Next exec ~/.local/bin/mon-lap;sleep 5;~/.local/bin/fancypaper
+bindsym $mod+Home exec fancypaper
+
+#Toggle compton
+bindsym $mod+End exec ~/.local/bin/toggle-compton

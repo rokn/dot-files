@@ -1,2 +1,3 @@
-xrandr --output VGA1 --mode 1680x1050 --pos 1366x0 --rotate normal --output HDMI1 --off --output DP1 --off --output eDP1 --mode 1366x768 --pos 0x470 --rotate normal
-feh --bg-scale /home/rokner/Wallpapers/space.jpeg
+xrandr --output VGA-1 --mode 1680x1050 --pos 1366x0 --rotate normal --output HDMI1 --off --output DP1 --off --output eDP-1 --mode 1366x768 --pos 0x470 --rotate normal
+wp
+i3-msg restart

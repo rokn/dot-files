@@ -11,7 +11,7 @@ rofi.separator-style: solid
 rofi.sidebar-mode: true
 rofi.bw: 1
 rofi.columns: 1
-rofi.padding: 350
+rofi.padding: 250
 
 rofi.yoffset: 0
 rofi.fake-transparency: false

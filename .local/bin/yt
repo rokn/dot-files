@@ -1,0 +1,5 @@
+#!/bin/sh
+
+url="${1%&*&*}"
+echo $url
+/home/rokner/anaconda3/envs/ytdl/bin/youtube-dl --extract-audio --audio-format mp3 $url
