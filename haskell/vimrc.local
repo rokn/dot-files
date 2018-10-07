@@ -95,3 +95,32 @@ vmap <Space>P "+Po clipboard:
 
 "S+R
 nmap <Leader>r :%s/<C-r><C-w>/
+
+nmap <Leader>sh :set filetype=haskell<CR>
+
+"Vimux
+function! RunWithClear(command)
+  VimuxRunCommand("clear")
+  VimuxRunCommand(a:command)
+endfunction
+
+nmap <leader>l :VimuxRunCommand("clear")<CR>
+nmap <leader>vp :VimuxPromptCommand<CR>
+nmap <leader>vl :VimuxRunCommand("ls")<CR>
+nmap <leader>vq :VimuxCloseRunner<CR>
+nmap <leader>vz :VimuxZoomRunner<CR>
+nmap <leader>vr :VimuxRunLastCommand<CR>
+vmap <leader>vs "vy :call VimuxSendText(@v)<CR>
+
+map <F5> :call RunWithClear("stack exec ${PWD##*/}-exe")<CR>
+map <F6> :call RunWithClear("stack test 2> .log")<CR>
+map <F7> :call RunWithClear("stack build")<CR>
+
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(md|so|cabal)$',
+  \ }
+
+let g:VimuxHeight = "35"
+let g:VimuxUseNearestPane = 0
