@@ -64,3 +64,6 @@ Plugin 'ryanoasis/vim-devicons'
 
 "Vertigo navigation
 Plugin 'prendradjaja/vim-vertigo'
+
+"Rust Support
+Plugin 'rust-lang/rust.vim'

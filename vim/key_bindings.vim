@@ -82,7 +82,7 @@ nmap <leader>vz :VimuxZoomRunner<CR>
 nmap <leader>vr :VimuxRunLastCommand<CR>
 vmap <leader>vs "vy :call VimuxSendText(@v)<CR>
 
-nmap <leader>g :call RunWithClear("g++ -g " . bufname("%"))<CR>
+nmap <leader>g :call RunWithClear("g++ -g --std=c++11 " . bufname("%"))<CR>
 nmap <leader>r :VimuxRunCommand("./a.out")<CR>
 map <leader>t :call RunWithClear("./tester a.out")<CR>
 

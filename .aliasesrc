@@ -1,7 +1,7 @@
 alias ls='ls --color=auto --human-readable --group-directories-first --classify'
 alias explorer='thunar'
 #alias mplayer='clementine'
-alias img='feh'
+alias img='gpicview'
 alias m='make'
 alias c='clear'
 alias rave='rake'

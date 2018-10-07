@@ -105,7 +105,7 @@ export CONDA_HOME="/home/rokner/anaconda3"
 
 #export PYTHONPATH="/home/rokner/anaconda3/lib/python3.6/site-packages":$PYTHONPATH
 
-export PATH="$HOME/.local/bin/:/usr/class/cs143/cool/bin:${PATH}:$HOME/.rvm/bin:$JAVA_HOME/bin:$GRADLE_HOME/bin:$IDEA_HOME/bin:$QT_HOME/bin:$CONDA_HOME/bin"
+export PATH="$HOME/.local/bin/:/usr/class/cs143/cool/bin:$HOME/.rvm/bin:$JAVA_HOME/bin:$GRADLE_HOME/bin:$IDEA_HOME/bin:$QT_HOME/bin:$CONDA_HOME/bin:${PATH}"
 
 . /usr/share/autojump/autojump.sh
 #fancy ctrl z for vim
@@ -129,3 +129,12 @@ bindkey '^Z' fancy-ctrl-z
 export TF_CPP_MIN_LOG_LEVEL='2'
 
 source ~/.aliasesrc
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+. /home/rokner/.nix-profile/etc/profile.d/nix.sh
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/rokner/.sdkman"
+[[ -s "/home/rokner/.sdkman/bin/sdkman-init.sh" ]] && source "/home/rokner/.sdkman/bin/sdkman-init.sh"

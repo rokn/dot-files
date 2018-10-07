@@ -1,12 +1,14 @@
 # i3 config file (v4)
 
-# _________________ VARIABLES _________________
+# _________________ VARIABLES _________________ {{{
 
+# Navigation
 set $up k
 set $down j
 set $left h
 set $right l
 
+# Modifier
 set $mod Mod4
 
 # Workspaces
@@ -17,25 +19,34 @@ set $worksp_4_altwork "4 "
 set $worksp_9_torrents "9 "
 set $worksp_10_music "10 "
 
-# set force update macro
+# Force update
 set $update exec --no-startup-id killall -USR1 i3status # ?? 
 
-# _________________ VARIABLES END _________________
+# Colors
+set $bg-color 	         #333333DD
+set $inactive-bg-color   #222222DD
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #E53935
+
+# _________________ VARIABLES END _________________ }}}
 
 
 
-# _________________ OPTIONS _________________
+# _________________ OPTIONS _________________ {{{
 
 font pango:SauceCodePro Nerd Font Medium 9
 
 # Drag windows with mouse
 floating_modifier $mod
 
-# _________________ OPTIONS END _________________
+workspace_auto_back_and_forth yes
+
+# _________________ OPTIONS END _________________ }}}
 
 
 
-# _________________ SHORTCUTS _________________
+# _________________ SHORTCUTS _________________ {{{
 
 # start dmenu (a program launcher)
 #bindsym Mod1+space exec i3-dmenu-desktop --dmenu='rofi -dmenu -lines 5 -eh 2 -width 100 -padding 400 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "Meslo LG M DZ for Powerline 18"'
@@ -163,20 +174,7 @@ bindsym $mod+Ctrl+Left workspace prev_on_output
 bindsym $mod+Ctrl+l workspace next_on_output
 bindsym $mod+Ctrl+Right workspace next_on_output
 
-# _________________ SHORTCUTS END _________________
-
-
-
-
-#Assign windows
-for_window [class="Spotify"] move to workspace $worksp_10_music
-assign [class="Google-chrome"] $worksp_2_chrome
-assign [class="Deluge"] $worksp_9_torrents
-
-for_window [class="App"] floating enable
-for_window [class="Octave"] floating enable
-for_window [class="FGL"] floating enable
-
+#Sleep
 bindsym $mod+Shift+s exec "pactl set-sink-volume 0 0;systemctl suspend"
 
 # reload the configuration file
@@ -186,61 +184,48 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# resize window (you can also use the mouse for that)
-mode "resize" {
-# These bindings trigger as soon as you enter the resize mode
+# Lock screen
+bindsym $mod+Shift+Escape exec --no-startup-id ~/.i3/i3lock-fancy-multimonitor/lock
 
-# Pressing left will shrink the window’s width.
-# Pressing right will grow the window’s width.
-# Pressing up will shrink the window’s height.
-# Pressing down will grow the window’s height.
-	bindsym $left       resize shrink width 10 px or 10 ppt
-		bindsym $down       resize grow height 10 px or 10 ppt
-		bindsym $up         resize shrink height 10 px or 10 ppt
-		bindsym $right      resize grow width 10 px or 10 ppt
+# Screenshots
+bindsym --release Print exec gnome-screenshot -a -c
+bindsym --release Shift+Print exec gnome-screenshot -i
 
-# same bindings, but for the arrow keys
-		bindsym Left        resize shrink width 10 px or 10 ppt
-		bindsym Down        resize grow height 10 px or 10 ppt
-		bindsym Up          resize shrink height 10 px or 10 ppt
-		bindsym Right       resize grow width 10 px or 10 ppt
+# Wallpaper
+bindsym $mod+Prior exec ~/.local/bin/mon-home;sleep 5;~/.local/bin/fancypaper
+bindsym $mod+Next exec ~/.local/bin/mon-lap;sleep 5;~/.local/bin/fancypaper
+bindsym $mod+Home exec fancypaper
 
-# back to normal: Enter or Escape
-		bindsym Return mode "default"
-		bindsym Escape mode "default"
-}
+# Toggle compton
+bindsym $mod+End exec ~/.local/bin/toggle-compton
 
-bindsym $mod+r mode "resize"
+# _________________ SHORTCUTS END _________________ }}}
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-set $bg-color 	         #333333DD
-set $inactive-bg-color   #222222DD
-set $text-color          #f3f4f5
-set $inactive-text-color #676E7D
-set $urgent-bg-color     #E53935
 
-# window colors
-#                       border              background         text                 indicator
-client.focused          $bg-color           $bg-color          $text-color          $bg-color
-client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color $inactive-bg-color
-client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color $inactive-bg-color
-client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $urgent-bg-color
 
-# bar
-#bar {
-	#status_command i3blocks -c /home/rokner/.i3/i3blocks.conf
-		#colors {
-			#background $bg-color
-				#separator #757575
-##                  border             background         text
-				#focused_workspace  $bg-color          $bg-color          $text-color
-				#inactive_workspace $bg-color 		  $bg-color          $inactive-text-color
-				#urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-		#}
-#}
+# _________________ WINDOW SPECIFICS _________________ {{{
 
-# Startup applications
+for_window [class="Spotify"] move to workspace $worksp_10_music
+assign [class="Google-chrome"] $worksp_2_chrome
+assign [class="Deluge"] $worksp_9_torrents
+assign [class="jetbrains-clion"] $worksp_3_work
+
+for_window [class="App"] floating enable
+for_window [class="Octave"] floating enable
+for_window [class="FGL"] floating enable
+
+# Borders
+# Necessary for i3-gaps to work properly (pixel can be any value)
+for_window [class="^.*"] border pixel 4
+for_window [class="Kupfer.py"] border pixel 0
+for_window [class="Google-chrome"] border pixel 0
+
+# _________________ WINDOW SPECIFICS END _________________ }}}
+
+
+
+# _________________ STARTUP APPLICATIONS _________________ {{{
+
 exec kupfer --no-splash
 exec_always --no-startup-id compton --config ~/.config/compton.conf
 exec --no-startup-id nm-applet
@@ -252,32 +237,55 @@ exec_always redshift -O 3000
 #exec_always sleep 2
 #exec_always --no-startup-id
 exec parcellite
-#exec -no-startup-id polybar main
-#exec -no-startup-id polybar extra
-#bindsym Mod1+Shift
-# Lockscreen
-#
-bindsym $mod+Shift+Escape exec --no-startup-id ~/.i3/i3lock-fancy-multimonitor/lock
-#set $lockscreen exec --no-startup-id i3lock -i ~/Wallpapers/Wallpaper -e -f
-#bindsym XF86ScreenSaver $lockscreen
-#bindsym Mod4+Escape     $lockscreen
+# Necessary for gnome screenshot to work 
+exec gnome-settings-daemon &
 
-### i3-gaps stuff ###
+# _________________ STARTUP APPLICATIONS END _________________ }}}
 
-# Necessary for i3-gaps to work properly (pixel can be any value)
-for_window [class="^.*"] border pixel 4
-for_window [class="Kupfer.py"] border pixel 0
-for_window [class="Google-chrome"] border pixel 0
+
+
+# _________________ RESIZE MODE  _________________ {{{
+
+mode "resize" {
+	bindsym $left       resize shrink width 10 px or 10 ppt
+		bindsym $down       resize grow height 10 px or 10 ppt
+		bindsym $up         resize shrink height 10 px or 10 ppt
+		bindsym $right      resize grow width 10 px or 10 ppt
+
+		bindsym Left        resize shrink width 10 px or 10 ppt
+		bindsym Down        resize grow height 10 px or 10 ppt
+		bindsym Up          resize shrink height 10 px or 10 ppt
+		bindsym Right       resize grow width 10 px or 10 ppt
+
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# _________________ RESIZE MODE END _________________ }}}
+
+
+
+# _________________ WINDOW COLORS _________________ {{{
+
+# state                 border              background         text                 indicator
+client.focused          $bg-color           $bg-color          $text-color          $bg-color
+client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color $inactive-bg-color
+client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color $inactive-bg-color
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $urgent-bg-color
+
+# _________________ WINDOW COLORS END _________________ }}}
+
+
+
+# _________________ i3-gaps _________________ {{{
 
 # Smart Gaps
 smart_gaps on
 
 # Smart Borders
 smart_borders on
-
-# Some color adjustments
-#client.focused_inactive #000000 #000000 #000000 #000000 #000000
-#client.unfocused        #000000 #000000 #000000 #000000 #000000
 
 # Set inner/outer gaps
 gaps inner 12
@@ -322,19 +330,4 @@ mode "$mode_gaps_outer" {
 		bindsym Escape mode "default"
 }
 
-#Custom shortcuts
-
-#Screenshots
-
-exec gnome-settings-daemon &
-bindsym --release Print exec gnome-screenshot -a -c
-bindsym --release Shift+Print exec gnome-screenshot -i
-
-workspace_auto_back_and_forth yes
-
-bindsym $mod+Prior exec ~/.local/bin/mon-home;sleep 5;~/.local/bin/fancypaper
-bindsym $mod+Next exec ~/.local/bin/mon-lap;sleep 5;~/.local/bin/fancypaper
-bindsym $mod+Home exec fancypaper
-
-#Toggle compton
-bindsym $mod+End exec ~/.local/bin/toggle-compton
+# _________________ i3-gaps END _________________ }}}
