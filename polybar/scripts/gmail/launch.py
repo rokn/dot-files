@@ -1,4 +1,5 @@
-#!/home/rokner/anaconda3/envs/gmail/bin/python
+#!  /home/rokn/miniconda3/envs/gmail/bin/python
+
 
 import os
 import pathlib

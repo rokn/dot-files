@@ -1,6 +1,5 @@
 alias ls='ls --color=auto --human-readable --group-directories-first --classify'
 alias explorer='thunar'
-#alias mplayer='clementine'
 alias img='gpicview'
 alias m='make'
 alias c='clear'
@@ -12,8 +11,7 @@ alias l='ls --color=auto'
 alias ..='cd ..'
 alias plgen='find -type f -iname \*.mp3 >'
 alias mirror-screen='xrandr --output HDMI-0 --auto --same-as DVI-I-1'
-alias tt-rails="tt-rails && exit"
-alias toclip="xclip -selection clipboard"
+alias -g CLIP="| xclip -selection clipboard"
 alias vol="alsamixer"
 alias ytdl="youtube-dl --extract-audio --audio-format mp3"
 alias wttr="curl wttr.in/sofia"
@@ -26,8 +24,9 @@ alias sp="pactl set-sink-mute 0 toggle; systemctl suspend"
 alias лс="ls"
 alias е="e"
 alias цд="cd"
-alias hac="ghc"
-alias hai="ghci"
+alias hac="stack runghc"
+alias hai="stack ghci"
 alias sshds="ssh home"
 alias sn="sudo shutdown now"
 alias so="source ~/.zshrc"
+alias v="vim"

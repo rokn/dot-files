@@ -2,7 +2,7 @@
 
 HOME="/home/$1"
 
-FILES_FOR_HOME=".vim .fonts .local .i3 .aliasesrc .vimrc .Xresources .zshrc .config .pythonrc"
+FILES_FOR_HOME=".fonts .local .i3 .aliasesrc .vimrc .Xresources .zshrc .config .pythonrc .tmux.conf"
 
 mkdir -p $HOME/.config
 mkdir -p $HOME/.local

@@ -1,4 +1,4 @@
-#!/home/rokner/anaconda3/envs/misc/bin/python
+#!/home/rokn/miniconda3/envs/spotify/bin/python
 
 import shlex
 from subprocess import Popen, PIPE

@@ -77,3 +77,8 @@ let g:PaperColor_Theme_Options = {
   \     }
   \   }
   \ }
+
+" Rust completions
+let g:racer_experimental_completer = 1
+
+let g:ctrlp_custom_ignore = '.git\|target'

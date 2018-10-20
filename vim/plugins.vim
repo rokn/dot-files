@@ -1,69 +1,82 @@
 "File explorer
-Plugin 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
+Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTreeTabsToggle'] }   
+Plug 'jistr/vim-nerdtree-tabs', { 'on':  'NERDTreeTabsToggle' }
 
 "Airline line
-Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 "Comments
-Plugin 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 
 "Fuzzy search
-Plugin 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
-"Plugin 'terryma/vim-expand-region'
-Plugin 'dahu/vim-fanfingtastic'
-Plugin 'octol/vim-cpp-enhanced-highlight'
+"Plug 'terryma/vim-expand-region'
+Plug 'dahu/vim-fanfingtastic'
+Plug 'octol/vim-cpp-enhanced-highlight'
 
 "Navigate tmux panes
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'benmills/vimux'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'benmills/vimux'
 
 "Color theme
-Plugin 'NLKNguyen/papercolor-theme'
+Plug 'NLKNguyen/papercolor-theme'
 
 "Python autocompletion
-Plugin 'davidhalter/jedi-vim'
+"Plug 'davidhalter/jedi-vim'
 
 "Auto add matching brace
-Plugin 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 
 "Surrond with symbols/braces
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 
 "Session Manager
-Plugin 'tpope/vim-obsession'
+Plug 'tpope/vim-obsession'
 
 " Snippets
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
-Plugin 'LucHermitte/lh-vim-lib'
-Plugin 'LucHermitte/lh-tags'
-Plugin 'LucHermitte/lh-dev'
-Plugin 'LucHermitte/lh-brackets'
-Plugin 'LucHermitte/vim-refactor'
-
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 
 "Buffers
-"Plugin 'bling/vim-bufferline'
+"Plug 'bling/vim-bufferline'
 
 "Easy motion with <space><space>
-Plugin 'easymotion/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
 
 "Debugger
-Plugin 'idanarye/vim-vebugger'
+Plug 'idanarye/vim-vebugger'
 
 "Undo made better
-Plugin 'mbbill/undotree'
+Plug 'mbbill/undotree'
 
 "Icons for all the stuff
-Plugin 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons'
 
 "Vertigo navigation
-Plugin 'prendradjaja/vim-vertigo'
+Plug 'prendradjaja/vim-vertigo'
 
 "Rust Support
-Plugin 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
+
+" Delete buffers smart
+Plug 'moll/vim-bbye'
+
+"Git
+Plug 'tpope/vim-fugitive'
+Plug 'int3/vim-extradite'
+
+"Text manipulation
+Plug 'vim-scripts/Align'
+
+" Haskell
+Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
+Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
+Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
+Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
+Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }
+Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }

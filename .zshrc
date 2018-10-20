@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/rokner/.oh-my-zsh
+  export ZSH=/home/rokn/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -55,7 +55,7 @@ ZSH_THEME="powerline"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git debian aws pip python)
+plugins=(git archlinux aws pip python common-aliases dirhistory httpie jsontools tmux zsh-autosuggestions cargo)
 autoload zmv
 
 source $ZSH/oh-my-zsh.sh
@@ -80,34 +80,24 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 
 export GLOG_logtostderr=1
 
 export EDITOR="vim"
 export BROWSER="/bin/google-chrome-stable"
-export JAVA_HOME="/home/rokner/Downloads/eclipse/jdk1.8.0_101"
-export GRADLE_HOME="/home/rokner/Downloads/gradle-3.2"
-export IDEA_HOME="/home/rokner/Downloads/idea-IU-162.2228.15"
-export PYTHONSTARTUP="/home/rokner/.pythonrc"
-export QT_HOME="/home/rokner/Qt/5.7/gcc_64"
-export NG_HOME="/home/rokner/Documents/"
-export CONDA_HOME="/home/rokner/anaconda3"
+export JAVA_HOME="/home/rokn/Downloads/eclipse/jdk1.8.0_101"
+export GRADLE_HOME="/home/rokn/Downloads/gradle-3.2"
+export IDEA_HOME="/home/rokn/Downloads/idea-IU-162.2228.15"
+export PYTHONSTARTUP="/home/rokn/.pythonrc"
+export QT_HOME="/home/rokn/Qt/5.7/gcc_64"
+export NG_HOME="/home/rokn/Documents/"
+export CONDA_HOME="/home/rokn/miniconda3"
 
 
-#export PYTHONPATH="/home/rokner/anaconda3/lib/python3.6/site-packages":$PYTHONPATH
+#export PYTHONPATH="/home/rokn/anaconda3/lib/python3.6/site-packages":$PYTHONPATH
 
 export PATH="$HOME/.local/bin/:/usr/class/cs143/cool/bin:$HOME/.rvm/bin:$JAVA_HOME/bin:$GRADLE_HOME/bin:$IDEA_HOME/bin:$QT_HOME/bin:$CONDA_HOME/bin:${PATH}"
 
-. /usr/share/autojump/autojump.sh
 #fancy ctrl z for vim
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then
@@ -120,11 +110,14 @@ fancy-ctrl-z () {
 }
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
+bindkey '^ ' autosuggest-accept
 
 #eval "$(thefuck --alias fck)"
-##. /home/rokner/torch/install/bin/torch-activate
+##. /home/rokn/torch/install/bin/torch-activate
 #
 #
+export praw_client_id='cz_M8qsF14kPZg'
+export praw_client_secret='Zye6tQTjKkQBVW7LQo4hWMTdymY'
 
 export TF_CPP_MIN_LOG_LEVEL='2'
 
@@ -133,8 +126,11 @@ source ~/.aliasesrc
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-. /home/rokner/.nix-profile/etc/profile.d/nix.sh
+ZSH_TMUX_AUTOSTART="true"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/rokner/.sdkman"
-[[ -s "/home/rokner/.sdkman/bin/sdkman-init.sh" ]] && source "/home/rokner/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="/home/rokn/.sdkman"
+[[ -s "/home/rokn/.sdkman/bin/sdkman-init.sh" ]] && source "/home/rokn/.sdkman/bin/sdkman-init.sh"
+
+
+

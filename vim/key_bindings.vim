@@ -16,7 +16,7 @@ vnoremap <tab> %
 nnoremap j gj
 nnoremap k gk
 
-map <leader>; <plug>NERDTreeTabsToggle<CR>
+map <leader>; :NERDTreeTabsToggle<CR>
 
 "Delete to the void
 map <leader>d "_dd
@@ -27,9 +27,10 @@ nmap <S-Enter> O<Esc>
 nmap <CR> o<Esc>
 
 noremap <leader>w :w<CR>
-noremap <Space>w :w<CR>
+noremap <leader>Q :Bdelete<CR>
+" Keep only current pane
+nnoremap <leader>bo <c-w>o
 noremap <leader>q :q<CR>
-noremap <Space>q :q<CR>
 
 " Default t
 vmap <Leader>d "+d
@@ -63,9 +64,12 @@ nmap <leader>sh :leftabove  vnew<CR>
 nmap <leader>sl :rightbelow vnew<CR>
 nmap <leader>sk :leftabove  new<CR>
 nmap <leader>sj :rightbelow new<CR>
+
 " Allow saving of files as sudo when I forgot to start vim using sudo
 cmap w!! w !sudo tee > /dev/null %
 
+" Kill the damned Ex mode.
+nnoremap Q <nop>
 
 
 " Vimux Bindings
@@ -102,15 +106,13 @@ nmap <F10> :VBGcontinue<CR>
 nmap <F8> :VBGstepOver<CR>
 nmap <leader>de :VBGevalWordUnderCursor<CR>
 
-source ~/.pyservervimrc
-
 "Buffers
 nmap <leader>bn :bn<CR>
 nmap <leader>bp :bp<CR>
 
 "UndoTree
 nmap <F3> :UndotreeToggle<CR>
-nmap <leader>u :UndotreeFocus
+nmap <leader>u :UndotreeFocus<CR>
 
 "Vim-Vertigo
 nnoremap <silent> <Space>j :<C-U>VertigoDown n<CR>

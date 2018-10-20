@@ -1,7 +1,8 @@
 set autoindent
+set autoread
 set autowrite
 set background=dark
-"set colorcolumn=85
+" et colorcolumn=85
 set completeopt-=preview
 set copyindent
 set directory^=$HOME/.vim/tmp//
@@ -16,8 +17,6 @@ set hlsearch
 set ignorecase
 set incsearch
 set laststatus=2
-set list
-set listchars=tab:\ \ ,trail:-,nbsp:-
 set modelines=0
 set mouse=a
 set number
@@ -38,6 +37,16 @@ set wildignore=*.swp,*.bak,*.pyc,*.class
 set wrap
 set wrapscan
 
+set nobackup
+set nowb
+set noswapfile
+
 "colorscheme monokai
 colorscheme PaperColor
 syntax enable
+
+set list
+" But only interesting whitespace
+if &listchars ==# 'eol:$'
+  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+endif
