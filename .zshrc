@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/rokn/.oh-my-zsh
+  export ZSH=/home/rokner/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -55,7 +55,7 @@ ZSH_THEME="powerline"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git archlinux aws pip python common-aliases dirhistory httpie jsontools tmux zsh-autosuggestions cargo)
+plugins=(git aws pip python common-aliases dirhistory httpie jsontools tmux zsh-autosuggestions cargo)
 autoload zmv
 
 source $ZSH/oh-my-zsh.sh
