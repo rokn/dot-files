@@ -1,0 +1,30 @@
+[user]
+	email = amindov98@gmail.com
+	name = Antonio Mindov
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[alias]
+	bs = branch-select
+	track = checkout --track
+	co = checkout
+	st = status -sb
+	oops = commit --amend --no-edit
+	alias = config --get-regexp ^alias\\.
+[push]
+	default = current
+[winUpdater]
+	recentlySeenVersion = 2.21.0.windows.1
+[help]
+	autocorrect = -1
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = true
+  pager = true
+[submodule]
+	recurse = true
