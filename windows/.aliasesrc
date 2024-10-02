@@ -1,0 +1,34 @@
+alias ls='ls --color=auto --human-readable --group-directories-first --classify'
+alias explorer='thunar'
+alias img='gpicview'
+alias m='make'
+alias c='clear'
+alias rave='rake'
+alias e='exit'
+alias :q='exit'
+alias :Q='exit'
+alias l='ls --color=auto'
+alias ..='cd ..'
+alias plgen='find -type f -iname \*.mp3 >'
+alias mirror-screen='xrandr --output HDMI-0 --auto --same-as DVI-I-1'
+alias -g CLIP="| xclip -selection clipboard"
+alias vol="alsamixer"
+alias ytdl="youtube-dl --extract-audio --audio-format mp3"
+alias wttr="curl wttr.in/sofia"
+alias ga="git add -A"
+alias gc="git commit"
+alias gp="git push"
+alias and-mount="jmtpfs"
+alias and-unmount="fusermount -u"
+alias sp="pactl set-sink-mute 0 toggle; systemctl suspend"
+alias лс="ls"
+alias е="e"
+alias цд="cd"
+alias hac="stack runghc"
+alias hai="stack ghci"
+alias sshds="ssh home"
+alias sn="sudo shutdown now"
+alias so="source ~/.zshrc"
+alias v="vim"
+alias dude="docker compose up -d"
+alias dud="docker compose down"
