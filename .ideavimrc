@@ -1,19 +1,18 @@
 "The leader of all hotkeys
 let mapleader = " "
 
-set autoindent
+" PLugins
+set easymotion
+set surround
+set sneak
+
+"set autoindent
 set autowrite
-set background=dark
+"set background=dark
 "set colorcolumn=85
-set completeopt-=preview
 set copyindent
 set directory^=$HOME/.vim/tmp//
 set encoding=utf-8
-set foldlevelstart=20
-set foldmethod=syntax "Fold on code blocks
-set formatoptions=qrn1
-set gdefault
-set hidden "Hide buffers
 set history=1000
 set hlsearch
 set ignorecase
@@ -24,47 +23,25 @@ set listchars=tab:\ \ ,trail:-,nbsp:-
 set modelines=0
 set mouse=a
 set number
-set pastetoggle=<F2>
 set relativenumber
 set scrolloff=9
 set shiftwidth=4
 set smartcase
 set smarttab
 set tabstop=4 "Tab = 4 spaces
-set textwidth=79
-set title
 set undodir=~/.vimundo
 set undofile
 set undolevels=1000
 set viminfo^=%
 set wildignore=*.swp,*.bak,*.pyc,*.class
-set wrap
 set wrapscan
-
-set syntax=on
-colorscheme monokai
-
-"Quick Edit vimrc
-nmap <silent> <leader>ev :cd ~/.config/vim/<CR>:e key_bindings.vim<CR>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " The holy one
 imap jj <ESC>
 
-"Searching
-nmap <silent> <leader>/ :nohlsearch<CR>
-nnoremap <tab> %
-vnoremap <tab> %
-
 "Long lines
 nnoremap j gj
 nnoremap k gk
-
-map <leader>; <plug>NERDTreeTabsToggle<CR>
-
-"Delete to the void
-map <leader>d "_dd
-map <Space>d "_dd
 
 " Add empty lines
 nmap <S-Enter> O<Esc>
@@ -107,61 +84,3 @@ nmap <leader>sh :leftabove  vnew<CR>
 nmap <leader>sl :rightbelow vnew<CR>
 nmap <leader>sk :leftabove  new<CR>
 nmap <leader>sj :rightbelow new<CR>
-" Allow saving of files as sudo when I forgot to start vim using sudo
-cmap w!! w !sudo tee > /dev/null %
-
-
-
-" Vimux Bindings
-function! RunWithClear(command)
-  VimuxRunCommand("clear")
-  VimuxRunCommand(a:command)
-endfunction
-
-nmap <leader>l :VimuxRunCommand("clear")<CR>
-nmap <leader>vp :VimuxPromptCommand<CR>
-nmap <leader>vl :VimuxRunCommand("ls")<CR>
-nmap <leader>vq :VimuxCloseRunner<CR>
-nmap <leader>vz :VimuxZoomRunner<CR>
-nmap <leader>vr :VimuxRunLastCommand<CR>
-vmap <leader>vs "vy :call VimuxSendText(@v)<CR>
-
-nmap <leader>g :call RunWithClear("g++ -g " . bufname("%"))<CR>
-nmap <leader>r :VimuxRunCommand("./a.out")<CR>
-map <leader>t :call RunWithClear("./tester a.out")<CR>
-
-map <F5> :call RunWithClear("make run")<CR>
-map <F6> :call RunWithClear("make test")<CR>
-map <F7> :call RunWithClear("make")<CR>
-
-"S + R
-nmap <Leader><S-r> :%s/<C-r><C-w>/
-
-
-"Debugger
-nmap <F7> :VBGstartGDB a.out<CR>
-nmap <S-F2> :VBGkill<CR>
-nmap <F9> :VBGtoggleBreakpointThisLine<CR>
-nmap <F10> :VBGcontinue<CR>
-nmap <F8> :VBGstepOver<CR>
-nmap <leader>de :VBGevalWordUnderCursor<CR>
-
-"Buffers
-nmap <leader>bn :bn<CR>
-nmap <leader>bp :bp<CR>
-
-"UndoTree
-nmap <F3> :UndotreeToggle<CR>
-nmap <leader>u :UndotreeFocus
-
-"Vim-Vertigo
-nnoremap <silent> <Space>j :<C-U>VertigoDown n<CR>
-vnoremap <silent> <Space>j :<C-U>VertigoDown v<CR>
-onoremap <silent> <Space>j :<C-U>VertigoDown o<CR>
-nnoremap <silent> <Space>k :<C-U>VertigoUp n<CR>
-vnoremap <silent> <Space>k :<C-U>VertigoUp v<CR>
-lnoremap <silent> <Space>k :<C-U>VertigoUp o<CR>
-
-noremap <Space>ds ma%x`ax
-
-set surround
