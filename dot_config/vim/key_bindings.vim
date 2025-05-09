@@ -97,15 +97,6 @@ map <F7> :call RunWithClear("make")<CR>
 "S + R
 nmap <Leader><S-r> :%s/<C-r><C-w>/
 
-
-"Debugger
-nmap <F7> :VBGstartGDB a.out<CR>
-nmap <S-F2> :VBGkill<CR>
-nmap <F9> :VBGtoggleBreakpointThisLine<CR>
-nmap <F10> :VBGcontinue<CR>
-nmap <F8> :VBGstepOver<CR>
-nmap <leader>de :VBGevalWordUnderCursor<CR>
-
 "Buffers
 nmap <leader>bn :bn<CR>
 nmap <leader>bp :bp<CR>
@@ -113,11 +104,3 @@ nmap <leader>bp :bp<CR>
 "UndoTree
 nmap <F3> :UndotreeToggle<CR>
 nmap <leader>u :UndotreeFocus<CR>
-
-"Vim-Vertigo
-nnoremap <silent> <Space>j :<C-U>VertigoDown n<CR>
-vnoremap <silent> <Space>j :<C-U>VertigoDown v<CR>
-onoremap <silent> <Space>j :<C-U>VertigoDown o<CR>
-nnoremap <silent> <Space>k :<C-U>VertigoUp n<CR>
-vnoremap <silent> <Space>k :<C-U>VertigoUp v<CR>
-lnoremap <silent> <Space>k :<C-U>VertigoUp o<CR>

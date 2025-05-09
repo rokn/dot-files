@@ -1,6 +1,0 @@
-#!/bin/bash
-
-net-turnoff
-ip link set wlp2s0 up
-iw dev wlp2s0 connect $1
-dhcpcd wlp2s0

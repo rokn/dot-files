@@ -1,7 +1,0 @@
-#!/bin/sh
-
-cd ~/Wallpapers/
-
-CURR=$(cat curr)
-
-feh --bg-scale $CURR

@@ -1,5 +1,0 @@
-#!/bin/bash
-
-net-turnoff
-ip link set up enp3s0f1
-dhcpcd enp3s0f1

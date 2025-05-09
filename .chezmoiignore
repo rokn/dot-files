@@ -9,4 +9,5 @@ polybar
 .oh-my-zsh/themes/
 .tmux.conf
 .Xresources
+.local
 {{- end }}

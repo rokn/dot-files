@@ -1,8 +1,0 @@
-#!/bin/sh
-
-if pgrep -x "compton" > /dev/null
-then
-	pkill compton
-else
-	compton --config .config/compton.conf&
-fi

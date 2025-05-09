@@ -6,27 +6,11 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_symbols.space = "\ua0"
 
-"Tmux
-let g:tmux_navigator_save_on_switch = 2
-
-"Snippets settings
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<C-tab>"
-
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
 "f/t ignore case
 let g:fanfingtastic_ignorecase = 1
-
-"Jedi python config
-let g:jedi#use_splits_not_buffers = "top"
-let g:jedi#goto_command = "<leader>h"
-
-"Vimux
-let g:VimuxPromptString = "Command: "
-let g:VimuxHeight = "30"
 
 "DevIcons
 let g:webdevicons_enable = 1
@@ -60,9 +44,6 @@ let g:DevIconsEnableFoldersOpenClose = 1
 "UndoTree
 let g:undotree_WindowLayout = 4
 
-"NerdTree
-let g:NERDTreeQuitOnOpen = 1
-
 "PaperColor theme
 let g:PaperColor_Theme_Options = {
   \   'language': {
@@ -77,8 +58,5 @@ let g:PaperColor_Theme_Options = {
   \     }
   \   }
   \ }
-
-" Rust completions
-let g:racer_experimental_completer = 1
 
 let g:ctrlp_custom_ignore = '.git\|target'

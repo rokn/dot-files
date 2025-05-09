@@ -1,3 +1,0 @@
-#!/bin/sh
-du -h $1 --total --max-depth 0
-

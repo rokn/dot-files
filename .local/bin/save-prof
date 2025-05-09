@@ -1,7 +1,0 @@
-#!/bin/bash
-
-CONF_DIR="$HOME/.config/xfce4/terminal"
-CONF="$CONF_DIR/terminalrc"
-
-echo "Saving Profile $1"
-cp "$CONF" "$CONF.$1"

@@ -2,16 +2,15 @@ set autoindent
 set autoread
 set autowrite
 set background=dark
-" et colorcolumn=85
 set completeopt-=preview
 set copyindent
 set directory^=$HOME/.vim/tmp//
 set encoding=utf-8
 set foldlevelstart=20
-set foldmethod=syntax "Fold on code blocks
+set foldmethod=syntax
 set formatoptions=qrn1
 set gdefault
-set hidden "Hide buffers
+set hidden
 set history=1000
 set hlsearch
 set ignorecase
@@ -26,7 +25,7 @@ set scrolloff=9
 set shiftwidth=4
 set smartcase
 set smarttab
-set tabstop=4 "Tab = 4 spaces
+set tabstop=4
 set textwidth=79
 set title
 set undodir=~/.vimundo

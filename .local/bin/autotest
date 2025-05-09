@@ -1,3 +1,0 @@
-#!/bin/zsh
-while true; do ~/tt/VeDe-Test/run-tests -r compact > ~/.autotests; sleep 10; done&
-while true; do cat ~/.autotests; sleep 10; clear; done

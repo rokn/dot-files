@@ -6,6 +6,7 @@ set easymotion
 set surround
 set sneak
 
+"set autoindent
 set autowrite
 set copyindent
 set directory^=$HOME/.vim/tmp//
@@ -35,6 +36,10 @@ set wrapscan
 
 " The holy one
 imap jj <ESC>
+
+nmap <silent> <leader>/ :nohlsearch<CR>
+nnoremap <tab> %
+vnoremap <tab> %
 
 "Long lines
 nnoremap j gj
