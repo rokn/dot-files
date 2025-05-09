@@ -1,0 +1,12 @@
+README.md
+{{- if ne .chezmoi.os "linux" }}
+.i3
+i3lock-fancy-multimonitor
+polybar
+.config/compton.conf
+.config/xfce4/
+.fonts/
+.oh-my-zsh/themes/
+.tmux.conf
+.Xresources
+{{- end }}

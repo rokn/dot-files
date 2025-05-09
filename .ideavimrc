@@ -6,10 +6,7 @@ set easymotion
 set surround
 set sneak
 
-"set autoindent
 set autowrite
-"set background=dark
-"set colorcolumn=85
 set copyindent
 set directory^=$HOME/.vim/tmp//
 set encoding=utf-8

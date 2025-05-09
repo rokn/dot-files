@@ -1,22 +1,17 @@
 [user]
-	email = amindov98@gmail.com
+	email = {{ .email }}
 	name = Antonio Mindov
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
 [alias]
-	bs = branch-select
 	track = checkout --track
 	co = checkout
+	main = checkout main
+	cb = checkout -b
 	st = status -sb
 	oops = commit --amend --no-edit
 	alias = config --get-regexp ^alias\\.
+	save = stash --include-untracked
 [push]
 	default = current
-[winUpdater]
-	recentlySeenVersion = 2.21.0.windows.1
 [help]
 	autocorrect = -1
 [color]
@@ -28,3 +23,5 @@
   pager = true
 [submodule]
 	recurse = true
+[core]
+	autocrlf = input
