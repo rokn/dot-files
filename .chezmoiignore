@@ -11,3 +11,5 @@ polybar
 .Xresources
 .local
 {{- end }}
+cursor_settings.json
+cursor_keybindings.json

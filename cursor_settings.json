@@ -1,0 +1,208 @@
+{
+	"workbench.colorTheme": "JetBrains Darcula Theme",
+	"workbench.colorCustomizations": {
+		"editorGutter.background": "#2d2d2d"
+	},
+	"editor.tokenColorCustomizations": {
+		"comments": "#708b81",
+	},
+	"editor.semanticTokenColorCustomizations": {
+		"rules": {
+			"parameter": "#c9574a",
+			"*.async": "#d571bc",
+			"selfParameter": "#9dd1ba",
+			"class": "#7ec5e3",
+			"property": "#ccd98a",
+			"*.deprecated": "#ff0000",
+		}
+	},
+	"typescript.preferences.quoteStyle": "single",
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"vim.easymotion": true,
+	"vim.history": 2001,
+	"vim.leader": "<space>",
+	"vim.insertModeKeyBindings": [
+		{
+			"before": [
+				"j",
+				"j"
+			],
+			"after": [
+				"<Esc>"
+			]
+		}
+	],
+	"vim.normalModeKeyBindings": [
+		{
+			"before": [
+				"<leader>",
+				"q"
+			],
+			"after": [],
+			"commands": [
+				{
+					"command": "workbench.action.closeActiveEditor",
+					"args": []
+				}
+			]
+		},
+		{
+			"before": [
+				"<leader>",
+				"w"
+			],
+			"after": [],
+			"commands": [
+				{
+					"command": "workbench.action.files.save",
+					"args": []
+				}
+			]
+		}
+	],
+	"vim.handleKeys": {
+		"<C-d>": true,
+		"<C-b>": false,
+		"<C-s>": false,
+		"<C-n>": false,
+		"<C-p>": false,
+		"<C-w>": false
+	},
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"editor.tabCompletion": "on",
+	"godotTools.editorPath.godot3": "/System/Volumes/Data/Applications/Godot.app/Contents/MacOS/Godot",
+	"godotTools.editorPath.godot4": "/System/Volumes/Data/Applications/Godot.app/Contents/MacOS/Godot",
+	"git.openRepositoryInParentFolders": "never",
+	"git.autofetch": true,
+	"editor.tabSize": 2,
+	"editor.formatOnPaste": true,
+	"editor.formatOnSave": true,
+	"editor.formatOnType": true,
+	"workbench.iconTheme": "vscode-jetbrains-icon-theme-2023-dark",
+	"python.defaultInterpreterPath": "/Users/antoniomindov/miniconda3/envs/openai-playground/bin/python",
+	"vim.sneak": true,
+	"window.title": "${rootNameShort}${separator}${activeEditorShort}",
+	"mypy.dmypyExecutable": "/Users/antoniomindov/miniconda3/envs/gAIa/bin/dmypy",
+	"editor.fontLigatures": true,
+	"editor.semanticHighlighting.enabled": true,
+	"files.exclude": {
+		"**/__pycache__": true,
+		"**/.pytest_cache": true
+	},
+	"python.languageServer": "Pylance",
+	"eslint.format.enable": true,
+	"[javascript]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+	"[go]": {
+		"editor.tabSize": 4
+	},
+	"dart.flutterSdkPath": "/opt/homebrew/Caskroom/flutter/3.29.2/flutter",
+	"lldb.library": "/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
+	"lldb.launch.expressions": "native",
+	"go.toolsManagement.autoUpdate": true,
+	"dart.debugExternalPackageLibraries": false,
+	"dart.debugSdkLibraries": false,
+	"git.confirmSync": false,
+	"cursor.cpp.disabledLanguages": [],
+	"cursor.composer.shouldAllowCustomModes": true,
+	"cursor.general.enableShadowWorkspace": true,
+	"security.promptForLocalFileProtocolHandling": false,
+	"editor.fontFamily": "Source Code Pro",
+	"files.autoSave": "onFocusChange",
+	"editor.fontSize": 13,
+	"editor.renderWhitespace": "trailing",
+	"editor.wordWrap": "wordWrapColumn",
+	"editor.wordWrapColumn": 120,
+	"diffEditor.wordWrap": "off",
+	"vim.textwidth": 120,
+	"cursor.composer.shouldChimeAfterChatFinishes": true,
+	"editor.dragAndDrop": false,
+	"editor.foldingImportsByDefault": true,
+	"editor.gotoLocation.alternativeDeclarationCommand": "editor.action.goToImplementation",
+	"editor.gotoLocation.alternativeDefinitionCommand": "editor.action.goToImplementation",
+	"editor.gotoLocation.multipleDeclarations": "gotoAndPeek",
+	"editor.gotoLocation.multipleDefinitions": "gotoAndPeek",
+	"editor.gotoLocation.multipleImplementations": "gotoAndPeek",
+	"editor.guides.bracketPairsHorizontal": false,
+	"editor.guides.highlightActiveBracketPair": false,
+	"editor.guides.bracketPairs": "active",
+	"editor.hover.above": false,
+	"editor.hover.delay": 100,
+	"editor.lineNumbers": "relative",
+	"editor.linkedEditing": true,
+	"editor.occurrencesHighlightDelay": 0,
+	"editor.renderFinalNewline": "dimmed",
+	"editor.renderLineHighlightOnlyWhenFocus": true,
+	"editor.rulers": [
+		{
+			"column": 120,
+			"color": "#739d99"
+		}
+	],
+	"editor.scrollbar.horizontalScrollbarSize": 5,
+	"editor.scrollbar.verticalScrollbarSize": 10,
+	"editor.smoothScrolling": true,
+	"editor.unfoldOnClickAfterEndOfLine": true,
+	"diffEditor.experimental.showMoves": true,
+	"files.autoSaveDelay": 500,
+	"files.insertFinalNewline": true,
+	"files.trimFinalNewlines": true,
+	"files.trimTrailingWhitespace": true,
+	"workbench.enableExperiments": false,
+	"workbench.list.smoothScrolling": true,
+	"workbench.list.defaultFindMode": "filter",
+	"workbench.preferredDarkColorTheme": "JetBrains Darcula Theme",
+	"workbench.preferredLightColorTheme": "GitHub Light",
+	"workbench.tips.enabled": false,
+	"workbench.tree.indent": 15,
+	"workbench.view.showQuietly": {
+		"workbench.panel.output": true
+	},
+	"workbench.editor.customLabels.patterns": {
+		"**/cmd/**/main.go": "${dirname(0)} main.go"
+	},
+	"workbench.editor.enablePreview": false,
+	"workbench.editor.pinnedTabsOnSeparateRow": true,
+	"workbench.editor.splitSizing": "distribute",
+	"workbench.editor.limit.enabled": true,
+	"workbench.editor.limit.value": 5,
+	"workbench.editor.limit.perEditorGroup": true,
+	"zenMode.fullScreen": false,
+	"zenMode.showTabs": "none",
+	"zenMode.centerLayout": false,
+	"workbench.editor.closeEmptyGroups": false,
+	"window.commandCenter": true,
+	"window.restoreWindows": "one",
+	"window.titleSeparator": " > ",
+	"window.zoomLevel": 0.3,
+	"window.newWindowDimensions": "maximized",
+	"explorer.compactFolders": false,
+	"explorer.incrementalNaming": "smart",
+	"search.actionsPosition": "auto",
+	"search.defaultViewMode": "tree",
+	"search.searchEditor.reusePriorSearchConfiguration": true,
+	"search.searchEditor.focusResultsOnSearch": true,
+	"search.smartCase": true,
+	"debug.closeReadonlyTabsOnEnd": true,
+	"debug.confirmOnExit": "always",
+	"debug.toolBarLocation": "commandCenter",
+	"debug.openExplorerOnEnd": true,
+	"search.useIgnoreFiles": false,
+	"testing.coverageToolbarEnabled": true,
+	"scm.defaultViewMode": "tree",
+	"extensions.closeExtensionDetailsOnViewChange": true,
+	"extensions.ignoreRecommendations": true,
+	"terminal.explorerKind": "external",
+	"terminal.external.osxExec": "Warp.app",
+	"problems.showCurrentInStatus": true,
+	"vscode-pets.petSize": "small",
+	"vscode-pets.theme": "forest",
+	"vscode-pets.throwBallWithMouse": true,
+	"svelte.enable-ts-plugin": true,
+	"cursorStats.currency": "BGN",
+	"[toml]": {},
+}
