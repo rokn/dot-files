@@ -205,4 +205,13 @@
 	"svelte.enable-ts-plugin": true,
 	"cursorStats.currency": "BGN",
 	"[toml]": {},
+	"typescript.updateImportsOnPaste.enabled": true,
+	"javascript.updateImportsOnPaste.enabled": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "always",
+		"source.removeUnusedImports": "always",
+		"source.addMissingImports.ts": "always",
+		"source.fixAll.ts": "always",
+		"source.organizeImports": "always",
+	},
 }
