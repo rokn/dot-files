@@ -569,5 +569,15 @@
         "key": "ctrl+shift+f9",
         "command": "-ahk++.compile",
         "when": "shellExecutionSupported && editorLangId == 'ahk' || shellExecutionSupported && editorLangId == 'ahk2' || shellExecutionSupported && editorLangId == 'ahk' && editorLangId == 'ahk2'"
+    },
+    {
+        "key": "cmd+r l",
+        "command": "testing.runCurrentFile",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "cmd+; f",
+        "command": "-testing.runCurrentFile",
+        "when": "editorTextFocus"
     }
 ]

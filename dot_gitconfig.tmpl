@@ -1,6 +1,9 @@
 [user]
 	email = {{ .email }}
 	name = Antonio Mindov
+{{- if .signingkey }}
+	signingkey = {{ .signingkey }}
+{{- end }}
 [alias]
 	track = checkout --track
 	co = checkout
@@ -10,6 +13,7 @@
 	oops = commit --amend --no-edit
 	alias = config --get-regexp ^alias\\.
 	save = stash --include-untracked
+	rcont = rebase --continue
 [push]
 	default = current
 [help]
@@ -25,3 +29,10 @@
 	recurse = true
 [core]
 	autocrlf = input
+	excludesFile = ~/.gitignore
+[gpg]
+	program = /opt/homebrew/bin/gpg
+[commit]
+	gpgsign = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/

@@ -1,0 +1,35 @@
+alias c='clear'
+alias e='exit'
+alias :q='exit'
+alias :Q='exit'
+alias l='ls --color=auto'
+alias ..='cd ..'
+alias ga="git add -A"
+alias gc="git commit"
+alias gp="git push"
+alias лс="ls"
+alias е="e"
+alias цд="cd"
+alias so="source ~/.zshrc"
+alias zshrc="$EDITOR ~/.zshrc"
+alias v="vim"
+alias dude="docker compose up -d"
+alias dud="docker compose down"
+alias aliases="$EDITOR ~/.config/aliasesrc"
+alias h=helm
+alias hin="helm install"
+alias hun="helm uninstall"
+alias b='git branch | grep -v "^\*" | fzf --height=20% --reverse --info=inline | xargs git checkout'
+alias ed='cursor .'
+
+
+t() {
+    local selected_task
+    local task_list=$(task --list | tail -n +2 | sed 's/\* //' | sed 's/  */ /g')
+
+    selected_task=$(echo "$task_list" | awk -F ':' '{print $1}' | fzf --height 40% --preview "echo '$task_list' | grep '^{}:'" --preview-window=right:50%:wrap)
+
+    if [[ -n "$selected_task" ]]; then
+        task "$selected_task"
+    fi
+}
