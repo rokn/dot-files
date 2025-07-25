@@ -57,3 +57,5 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 
 source $HOME/.config/zshrc_machine_specific
+
+chpwd() ls

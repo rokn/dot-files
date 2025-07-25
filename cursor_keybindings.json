@@ -43,7 +43,7 @@
         "when": "textInputFocus"
     },
     {
-        "key": "shift+f10",
+        "key": "f10",
         "command": "workbench.action.debug.run",
         "when": "debuggersAvailable && debugState != 'initializing'"
     },
@@ -53,7 +53,7 @@
         "when": "debuggersAvailable && debugState != 'initializing'"
     },
     {
-        "key": "shift+f9",
+        "key": "f9",
         "command": "workbench.action.debug.start",
         "when": "debuggersAvailable && debugState == 'inactive'"
     },
@@ -579,5 +579,10 @@
         "key": "cmd+; f",
         "command": "-testing.runCurrentFile",
         "when": "editorTextFocus"
+    },
+    {
+        "key": "f10",
+        "command": "-extension.node-debug.startWithStopOnEntry",
+        "when": "!inDebugMode && debugConfigurationType == 'node' || !inDebugMode && debugConfigurationType == 'pwa-extensionHost' || !inDebugMode && debugConfigurationType == 'pwa-node'"
     }
 ]
