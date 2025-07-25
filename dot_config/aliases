@@ -1,8 +1,10 @@
+alias ll='ls -l'
+alias la='ls -a'
+alias l='ls'
 alias c='clear'
 alias e='exit'
 alias :q='exit'
 alias :Q='exit'
-alias l='ls --color=auto'
 alias ..='cd ..'
 alias ga="git add -A"
 alias gc="git commit"

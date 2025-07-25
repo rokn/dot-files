@@ -1,8 +1,8 @@
 [user]
 	email = {{ .email }}
 	name = Antonio Mindov
-{{- if .signingkey }}
-	signingkey = {{ .signingkey }}
+{{- if hasKey . "signingKey" }}
+	signingkey = {{ .signingKey }}
 {{- end }}
 [alias]
 	track = checkout --track

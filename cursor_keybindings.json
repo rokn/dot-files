@@ -584,5 +584,9 @@
         "key": "f10",
         "command": "-extension.node-debug.startWithStopOnEntry",
         "when": "!inDebugMode && debugConfigurationType == 'node' || !inDebugMode && debugConfigurationType == 'pwa-extensionHost' || !inDebugMode && debugConfigurationType == 'pwa-node'"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "-workbench.action.switchWindow"
     }
 ]

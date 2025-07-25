@@ -1,18 +1,14 @@
-export ZSH=$HOME/.oh-my-zsh
-
-ppugins=(git pip python httpie kubectl npm helm gcloud)
-autoload zmv
-
-source $ZSH/oh-my-zsh.sh
-
 export EDITOR="vim"
 
-export PATH="$HOME/.local/bin/:$PATH"
-
 export GOPATH=$HOME/go
+export BUN_INSTALL="$HOME/.bun"
+
+export PATH="$HOME/.local/bin/:$PATH"
 export PATH=$PATH:$GOPATH/bin
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
+export PATH="$BUN_INSTALL/bin:$PATH"
 
 #fancy ctrl z for vim
 fancy-ctrl-z () {
@@ -27,35 +23,39 @@ fancy-ctrl-z () {
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
-source ~/.config/aliases
+# Source additional configuration files
+local config_files=(
+    "$HOME/.local/bin/env"
+    "$HOME/.config/zsh/git_functions.zsh"
+    "$HOME/.bun/_bun"
+    "$HOME/.config/zshrc_machine_specific"
+    "$HOME/.config/aliases"
+    "$HOME/.fzf.zsh"
+    "/opt/homebrew/etc/profile.d/autojump.sh"
+)
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+for config_file in $config_files; do
+    [ -f "$config_file" ] && source "$config_file"
+done
 
+# Add completions
 # Custom completions directory
 fpath=(~/.zsh/completions $fpath)
 fpath=(/Users/antoniomindov/.docker/completions $fpath)
+
 # Initialize completion system
 autoload -Uz compinit
 compinit
 
-. "$HOME/.local/bin/env"
 eval "$(uv generate-shell-completion zsh)"
-
-source ~/.config/zsh/git_functions.zsh
-
 eval "$(direnv hook zsh)"
-
 eval "$(task --completion zsh)"
 
-# bun completions
-[ -s "/Users/antoniomindov/.bun/_bun" ] && source "/Users/antoniomindov/.bun/_bun"
+if which lsd > /dev/null; then
+	alias ls="lsd"
+fi
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
-
-source $HOME/.config/zshrc_machine_specific
-
+# Print the current directory when changing directories
 chpwd() ls
+
+ls
