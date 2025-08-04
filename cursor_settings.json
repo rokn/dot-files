@@ -120,7 +120,6 @@
 	"vim.textwidth": 120,
 	"cursor.composer.shouldChimeAfterChatFinishes": true,
 	"editor.dragAndDrop": false,
-	"editor.foldingImportsByDefault": true,
 	"editor.gotoLocation.alternativeDeclarationCommand": "editor.action.goToImplementation",
 	"editor.gotoLocation.alternativeDefinitionCommand": "editor.action.goToImplementation",
 	"editor.gotoLocation.multipleDeclarations": "gotoAndPeek",

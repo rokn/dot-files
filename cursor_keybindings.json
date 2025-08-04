@@ -588,5 +588,9 @@
     {
         "key": "ctrl+w",
         "command": "-workbench.action.switchWindow"
+    },
+    {
+        "key": "cmd+e",
+        "command": "composerMode.background"
     }
 ]
