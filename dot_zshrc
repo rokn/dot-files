@@ -14,6 +14,8 @@ export PATH="$HOME/.asdf/shims:$PATH"
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 autoload -Uz compinit && compinit
 
+setopt auto_cd
+
 if ! which starship >/dev/null; then
 	curl -fsSL https://starship.rs/install.sh | sh
 fi
