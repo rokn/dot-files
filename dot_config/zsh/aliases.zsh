@@ -1,7 +1,6 @@
 alias ll='ls -l'
 alias la='ls -a'
 alias l='ls'
-alias c='clear'
 alias e='exit'
 alias :q='exit'
 alias :Q='exit'
@@ -24,15 +23,5 @@ alias hun="helm uninstall"
 alias b='git branch | grep -v "^\*" | fzf --height=20% --reverse --info=inline | xargs git checkout'
 alias ed='cursor .'
 alias k=kubectl
-
-
-t() {
-    local selected_task
-    local task_list=$(task --list | tail -n +2 | sed 's/\* //' | sed 's/  */ /g')
-
-    selected_task=$(echo "$task_list" | awk -F ':' '{print $1}' | fzf --height 40% --preview "echo '$task_list' | grep '^{}:'" --preview-window=right:50%:wrap)
-
-    if [[ -n "$selected_task" ]]; then
-        task "$selected_task"
-    fi
-}
+alias c=clear_and_context
+alias t=task_fzf

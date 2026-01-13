@@ -17,12 +17,18 @@ autoload -Uz compinit && compinit
 if ! which starship >/dev/null; then
 	curl -fsSL https://starship.rs/install.sh | sh
 fi
+
+if which lsd > /dev/null; then
+	alias ls="lsd"
+fi
 eval "$(starship init zsh)"
+
+source "$HOME/.config/zsh/functions.zsh"
 
 # Source additional configuration files
 local config_files=(
     "$HOME/.local/bin/env"
-    "$HOME/.config/aliases"
+    "$HOME/.config/zsh/aliases.zsh"
     "$BREW_PREFIX/etc/profile.d/autojump.sh"
 )
 
@@ -42,10 +48,6 @@ eval "$(uv generate-shell-completion zsh)"
 eval "$(direnv hook zsh)"
 eval "$(task --completion zsh)"
 
-if which lsd > /dev/null; then
-	alias ls="lsd"
-fi
-
 # Key bindings
 bindkey -v
 
@@ -53,8 +55,12 @@ bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
 
 autoload -Uz edit-command-line
+
 zle -N edit-command-line
 bindkey '^X^E' edit-command-line
+
+zle -N clear_and_context_widget
+bindkey '^L' clear_and_context_widget
 
 # FZF reverse search
 source <(fzf --zsh)
@@ -66,9 +72,11 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 source "${ZINIT_HOME}/zinit.zsh"
 
 # Do machine specific stuff last so we can override the aliases and functions
-source "$HOME/.config/zshrc_machine_specific"
+source "$HOME/.config/zsh/machine_specific"
 
 # Print the current directory when changing directories (like ls -la)
-chpwd() ls
+chpwd() {
+    clear_and_context
+}
 
 ls
