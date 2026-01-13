@@ -4,7 +4,7 @@
 		"editorGutter.background": "#2d2d2d"
 	},
 	"editor.tokenColorCustomizations": {
-		"comments": "#708b81",
+		"comments": "#708b81"
 	},
 	"editor.semanticTokenColorCustomizations": {
 		"rules": {
@@ -13,7 +13,7 @@
 			"selfParameter": "#9dd1ba",
 			"class": "#7ec5e3",
 			"property": "#ccd98a",
-			"*.deprecated": "#ff0000",
+			"*.deprecated": "#ff0000"
 		}
 	},
 	"typescript.preferences.quoteStyle": "single",
@@ -91,7 +91,7 @@
 	"python.languageServer": "Pylance",
 	"eslint.format.enable": true,
 	"[javascript]": {
-		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+		"editor.defaultFormatter": "vscode.typescript-language-features"
 	},
 	"[typescript]": {
 		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
@@ -113,7 +113,7 @@
 	"editor.fontFamily": "Source Code Pro",
 	"files.autoSave": "onFocusChange",
 	"editor.fontSize": 13,
-	"editor.renderWhitespace": "trailing",
+	"editor.renderWhitespace": "none",
 	"editor.wordWrap": "wordWrapColumn",
 	"editor.wordWrapColumn": 120,
 	"diffEditor.wordWrap": "off",
@@ -210,10 +210,13 @@
 		"source.removeUnusedImports": "always",
 		"source.addMissingImports.ts": "always",
 		"source.fixAll.ts": "always",
-		"source.organizeImports": "always",
+		"source.organizeImports": "always"
 	},
 	"github-actions.use-enterprise": true,
 	"go.lintTool": "golangci-lint-v2",
 	"clangd.path": "/Users/antoniomindov/Library/Application Support/Cursor/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/20.1.0/clangd_20.1.0/bin/clangd",
 	"editor.inlayHints.enabled": "off",
+	"cursor.composer.usageSummaryDisplay": "always",
+	"explorer.confirmDragAndDrop": false,
+	"workbench.sideBar.location": "right"
 }

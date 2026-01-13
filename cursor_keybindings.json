@@ -1,4 +1,3 @@
-// Place your key bindings in this file to override the defaults
 [
     {
         "key": "cmd+b",
@@ -592,5 +591,13 @@
     {
         "key": "cmd+e",
         "command": "composerMode.background"
+    },
+    {
+        "key": "alt+a",
+        "command": "git.stage"
+    },
+    {
+        "key": "shift+alt+a",
+        "command": "git.stageAll"
     }
 ]

@@ -23,6 +23,7 @@ alias hin="helm install"
 alias hun="helm uninstall"
 alias b='git branch | grep -v "^\*" | fzf --height=20% --reverse --info=inline | xargs git checkout'
 alias ed='cursor .'
+alias k=kubectl
 
 
 t() {

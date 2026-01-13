@@ -2,38 +2,28 @@ setopt autocd
 
 export EDITOR="vim"
 
-export GOPATH=$HOME/go
-export BUN_INSTALL="$HOME/.bun"
-
+# Default paths
+BREW_PREFIX=$(brew --prefix)
 export PATH="$HOME/.local/bin/:$PATH"
-export PATH=$PATH:$GOPATH/bin
-export PATH="/opt/homebrew/bin:$PATH"
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+export PATH="$BREW_PREFIX/bin:$PATH"
 
-export PATH="$BUN_INSTALL/bin:$PATH"
+# asdf binaries
+export PATH="$HOME/.asdf/shims:$PATH"
 
-#fancy ctrl z for vim
-fancy-ctrl-z () {
-  if [[ $#BUFFER -eq 0 ]]; then
-    BUFFER="fg"
-    zle accept-line
-  else
-    zle push-input
-    zle clear-screen
-  fi
-}
-zle -N fancy-ctrl-z
-bindkey '^Z' fancy-ctrl-z
+# Case insensitive
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+autoload -Uz compinit && compinit
+
+if ! which starship >/dev/null; then
+	curl -fsSL https://starship.rs/install.sh | sh
+fi
+eval "$(starship init zsh)"
 
 # Source additional configuration files
 local config_files=(
     "$HOME/.local/bin/env"
-    "$HOME/.config/zsh/git_functions.zsh"
-    "$HOME/.bun/_bun"
-    "$HOME/.config/zshrc_machine_specific"
     "$HOME/.config/aliases"
-    "$HOME/.fzf.zsh"
-    "/opt/homebrew/etc/profile.d/autojump.sh"
+    "$BREW_PREFIX/etc/profile.d/autojump.sh"
 )
 
 for config_file in $config_files; do
@@ -43,7 +33,6 @@ done
 # Add completions
 # Custom completions directory
 fpath=(~/.zsh/completions $fpath)
-fpath=(/Users/antoniomindov/.docker/completions $fpath)
 
 # Initialize completion system
 autoload -Uz compinit
@@ -57,7 +46,29 @@ if which lsd > /dev/null; then
 	alias ls="lsd"
 fi
 
-# Print the current directory when changing directories
+# Key bindings
+bindkey -v
+
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
+
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
+
+# FZF reverse search
+source <(fzf --zsh)
+
+# Zinit
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
+
+# Do machine specific stuff last so we can override the aliases and functions
+source "$HOME/.config/zshrc_machine_specific"
+
+# Print the current directory when changing directories (like ls -la)
 chpwd() ls
 
 ls
