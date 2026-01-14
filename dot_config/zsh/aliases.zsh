@@ -26,3 +26,4 @@ alias k=kubectl
 alias c=clear_and_context
 alias t=task_fzf
 alias ch=chezmoi
+alias ef='fzf --preview "less {}" | xargs cursor'

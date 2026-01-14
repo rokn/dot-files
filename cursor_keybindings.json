@@ -589,10 +589,6 @@
         "command": "-workbench.action.switchWindow"
     },
     {
-        "key": "cmd+e",
-        "command": "composerMode.background"
-    },
-    {
         "key": "alt+a",
         "command": "git.stage"
     },
