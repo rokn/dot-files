@@ -595,5 +595,50 @@
     {
         "key": "shift+alt+a",
         "command": "git.stageAll"
+    },
+    {
+        "key": "f12",
+        "command": "editor.action.showContextMenu"
+    },
+    {
+        "key": "shift+cmd+h",
+        "command": "workbench.action.focusLeftGroup"
+    },
+    {
+        "key": "cmd+r cmd+left",
+        "command": "-workbench.action.focusLeftGroup"
+    },
+    {
+        "key": "cmd+l",
+        "command": "workbench.action.focusRightGroup"
+    },
+    {
+        "key": "cmd+r cmd+right",
+        "command": "-workbench.action.focusRightGroup"
+    },
+    {
+        "key": "shift+cmd+u",
+        "command": "workbench.debug.action.toggleRepl",
+        "when": "workbench.panel.repl.view.active"
+    },
+    {
+        "key": "shift+alt+cmd+y",
+        "command": "-workbench.debug.action.toggleRepl",
+        "when": "workbench.panel.repl.view.active"
+    },
+    {
+        "key": "shift+cmd+u",
+        "command": "-workbench.action.output.toggleOutput",
+        "when": "workbench.panel.output.active"
+    },
+    {
+        "key": "shift+cmd+space",
+        "command": "-composer.toggleVoiceDictation",
+        "when": "!terminalFocus"
+    },
+    {
+        "key": "cmd+l",
+        "command": "workbench.debug.panel.action.clearReplAction",
+        "when": "inDebugRepl"
     }
 ]

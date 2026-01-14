@@ -1,8 +1,5 @@
 {
 	"workbench.colorTheme": "JetBrains Darcula Theme",
-	"workbench.colorCustomizations": {
-		"editorGutter.background": "#2d2d2d"
-	},
 	"editor.tokenColorCustomizations": {
 		"comments": "#708b81"
 	},
@@ -82,7 +79,7 @@
 	"vim.sneak": true,
 	"window.title": "${rootNameShort}",
 	"mypy.dmypyExecutable": "/Users/antoniomindov/miniconda3/envs/gAIa/bin/dmypy",
-	"editor.fontLigatures": true,
+	"editor.fontLigatures": false,
 	"editor.semanticHighlighting.enabled": true,
 	"files.exclude": {
 		"**/__pycache__": true,
@@ -154,7 +151,7 @@
 	"workbench.list.smoothScrolling": true,
 	"workbench.list.defaultFindMode": "filter",
 	"workbench.preferredDarkColorTheme": "JetBrains Darcula Theme",
-	"workbench.preferredLightColorTheme": "GitHub Light",
+	"workbench.preferredLightColorTheme": "Gitpod Light",
 	"workbench.tips.enabled": false,
 	"workbench.tree.indent": 15,
 	"workbench.view.showQuietly": {
@@ -172,7 +169,6 @@
 	"zenMode.fullScreen": false,
 	"zenMode.showTabs": "none",
 	"zenMode.centerLayout": false,
-	"workbench.editor.closeEmptyGroups": false,
 	"window.commandCenter": true,
 	"window.restoreWindows": "one",
 	"window.titleSeparator": " > ",
@@ -214,9 +210,35 @@
 	},
 	"github-actions.use-enterprise": true,
 	"go.lintTool": "golangci-lint-v2",
-	"clangd.path": "/Users/antoniomindov/Library/Application Support/Cursor/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/20.1.0/clangd_20.1.0/bin/clangd",
 	"editor.inlayHints.enabled": "off",
 	"cursor.composer.usageSummaryDisplay": "always",
 	"explorer.confirmDragAndDrop": false,
-	"workbench.sideBar.location": "right"
+	"workbench.sideBar.location": "right",
+	"go.lintFlags": [
+		"--fix"
+	],
+	"diffEditor.hideUnchangedRegions.enabled": true,
+	"workbench.panel.showLabels": false,
+	"[dockercompose]": {
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2,
+		"editor.autoIndent": "advanced",
+		"editor.defaultFormatter": "redhat.vscode-yaml"
+	},
+	"[github-actions-workflow]": {
+		"editor.defaultFormatter": "redhat.vscode-yaml"
+	},
+	"isort.importStrategy": "fromEnvironment",
+	"editor.defaultFormatter": "dbaeumer.vscode-eslint",
+	"cursor.enable_agent_window_setting": true,
+	"cursor.enable_git_worktrees_setting": true,
+	"window.systemColorTheme": "auto",
+	"window.autoDetectColorScheme": true,
+	"githubPullRequests.pullBranch": "never",
+	"[json]": {
+		"editor.defaultFormatter": "vscode.json-language-features"
+	},
+	"search.exclude": {
+		"**/.venv": true
+	}
 }
