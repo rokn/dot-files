@@ -110,7 +110,7 @@
 	"cursor.composer.shouldAllowCustomModes": true,
 	"cursor.general.enableShadowWorkspace": true,
 	"security.promptForLocalFileProtocolHandling": false,
-	"editor.fontFamily": "Source Code Pro",
+	"editor.fontFamily": "Source Code Pro Nerd Font",
 	"files.autoSave": "onFocusChange",
 	"editor.fontSize": 13,
 	"editor.renderWhitespace": "none",

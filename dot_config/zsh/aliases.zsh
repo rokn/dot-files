@@ -25,3 +25,4 @@ alias ed='cursor .'
 alias k=kubectl
 alias c=clear_and_context
 alias t=task_fzf
+alias ch=chezmoi
