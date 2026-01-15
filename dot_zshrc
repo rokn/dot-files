@@ -1,4 +1,6 @@
-setopt autocd
+HISTSIZE=10000
+HISTFILE=~/.zshistory
+SAVEHIST=8000
 
 export EDITOR="vim"
 
