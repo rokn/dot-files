@@ -12,6 +12,7 @@ task_fzf() {
 
 clear_and_context() {
     [[ -t 1 ]] && clear -x
+	echo $(pwd) ":"
     ls
     if [ -d .git ]; then
         echo
