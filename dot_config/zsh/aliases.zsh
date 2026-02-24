@@ -28,3 +28,4 @@ alias t=task_fzf
 alias ch=chezmoi
 alias ef='fzf --preview "less {}" | xargs cursor'
 alias cf='cdf'
+alias dus='du -h -d 1 . | sort -h'

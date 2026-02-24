@@ -6,8 +6,10 @@ export EDITOR="vim"
 
 # Default paths
 BREW_PREFIX=$(brew --prefix)
-export PATH="$HOME/.local/bin/:$PATH"
+export GOPATH="$HOME/go"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="$BREW_PREFIX/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
 
 # asdf binaries
 export PATH="$HOME/.asdf/shims:$PATH"
@@ -51,6 +53,7 @@ compinit
 eval "$(uv generate-shell-completion zsh)"
 eval "$(direnv hook zsh)"
 eval "$(task --completion zsh)"
+#eval "$(~/.local/bin/agent shell-integration zsh)"
 
 # Key bindings
 bindkey -v
@@ -77,6 +80,7 @@ source "${ZINIT_HOME}/zinit.zsh"
 
 # Do machine specific stuff last so we can override the aliases and functions
 source "$HOME/.config/zsh/machine_specific"
+
 
 # Print the current directory when changing directories (like ls -la)
 chpwd() {

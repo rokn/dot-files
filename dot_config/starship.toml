@@ -9,7 +9,7 @@ add_newline = true
 success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
 
 # [prompt]
-# command_timeout = 1000
+# command_timeout = 3000
 
 # Disable the package module, hiding it from the prompt completely
 [gcloud]
@@ -18,6 +18,20 @@ disabled = true
 [aws]
 disabled = true
 
+
+[cmd_duration]
+show_notifications = true
+show_milliseconds = true
+min_time = 0
+min_time_to_notify = 20_000
+
+[custom.command_suggester]
+command = "terminal-autocomplete"
+# command = "$HOME/.config/test_custom_command.py"
+when = "true"
+ignore_timeout = true
+
+## Icons
 [buf]
 symbol = " "
 

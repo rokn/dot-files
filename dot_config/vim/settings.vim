@@ -19,7 +19,6 @@ set laststatus=2
 set modelines=0
 set mouse=a
 set number
-set pastetoggle=<F2>
 set relativenumber
 set scrolloff=9
 set shiftwidth=4

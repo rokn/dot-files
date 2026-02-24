@@ -103,7 +103,9 @@
 	"dart.debugExternalPackageLibraries": false,
 	"dart.debugSdkLibraries": false,
 	"git.confirmSync": false,
-	"cursor.cpp.disabledLanguages": [],
+	"cursor.cpp.disabledLanguages": [
+		"markdown"
+	],
 	"cursor.composer.shouldAllowCustomModes": true,
 	"cursor.general.enableShadowWorkspace": true,
 	"security.promptForLocalFileProtocolHandling": false,
@@ -240,5 +242,10 @@
 	},
 	"search.exclude": {
 		"**/.venv": true
-	}
+	},
+	"files.associations": {
+		"*.needle": "shellscript"
+	},
+	"go.lintOnSave": "workspace",
+	"go.diagnostic.vulncheck": "Off"
 }

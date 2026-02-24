@@ -640,5 +640,23 @@
         "key": "cmd+l",
         "command": "workbench.debug.panel.action.clearReplAction",
         "when": "inDebugRepl"
+    },
+    {
+        "key": "shift+cmd+n",
+        "command": "r.knitRmd",
+        "when": "editorTextFocus && editorLangId == 'rmd'"
+    },
+    {
+        "key": "shift+cmd+k",
+        "command": "-r.knitRmd",
+        "when": "editorTextFocus && editorLangId == 'rmd'"
+    },
+    {
+        "key": "ctrl+shift+f10",
+        "command": "vscode-task.runTaskPicker"
+    },
+    {
+        "key": "shift+cmd+f10",
+        "command": "vscode-task.runLastTask"
     }
 ]
