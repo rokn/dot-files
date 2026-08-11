@@ -1,3 +1,5 @@
 .DS_Store
 .tool-versions
 .git-town.toml
+
+**/.claude/settings.local.json

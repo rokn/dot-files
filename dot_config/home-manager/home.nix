@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 
+
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -22,7 +23,7 @@
 	lsd jq ripgrep bat tree fzf
 	direnv nix-direnv zoxide
 	gh delta lazygit
-	fd # vim telescope req
+	fd tmuxp # vim telescope req
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -78,6 +79,7 @@
       ch = "chezmoi";
       ef = ''fzf --preview "less {}" | xargs $EDITOR'';
       cf = "cdf";
+      tm = "tmux -CC new-session -A -s";
     };
     initContent = ''
       bindkey "^[[1;3C" forward-word
@@ -92,6 +94,12 @@
 	  chpwd() {
 	    clear_and_context
 	  }
+
+	  export TMUX_AUTO=0
+	  if [ -z "$TMUX" ] && [ -n "$SSH_TTY" ] && [ -z "$TMUX_AUTO" ]; then
+	    tmux new -A -s default
+	    exit
+      fi
     '';
   };
 
@@ -110,6 +118,48 @@
   programs.tmux = {
     enable = true;
     mouse = true;
+    terminal = "tmux-256color";
+    historyLimit = 100000;
+    keyMode = "vi";
+    plugins = with pkgs;
+      [
+		tmuxPlugins.sensible
+        tmuxPlugins.better-mouse-mode
+        tmuxPlugins.power-theme
+        tmuxPlugins.fingers
+        tmuxPlugins.tmux-which-key
+      ];
+    extraConfig = ''
+# Make 'v' start selection (like vim)
+bind-key -T copy-mode-vi v send-keys -X begin-selection
+
+# Make 'y' yank and exit (like vim)
+bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+
+set-option -g set-titles on
+set -g set-titles-string '#S - #W - #h'
+
+# Start windows and panes at 1, not 0
+set -g base-index 1
+setw -g pane-base-index 1
+
+bind -n M-Tab next-window
+
+bind -n M-1 select-window -t :1
+bind -n M-2 select-window -t :2
+bind -n M-3 select-window -t :3
+bind -n M-4 select-window -t :4
+bind -n M-5 select-window -t :5
+bind -n M-6 select-window -t :6
+bind -n M-7 select-window -t :7
+bind -n M-8 select-window -t :8
+bind -n M-9 select-window -t :9
+
+bind -n M-d split-pane -h
+bind -n M-D split-pane
+
+bind -n M-w kill-pane
+    '';
   };
 
   programs.git = {
@@ -145,27 +195,10 @@
       # Colorscheme
       catppuccin-nvim
 
+      nvim-surround
+
       # avante.nvim required dependency
       nui-nvim
-       {
-		   plugin = avante-nvim;
-		   type = "lua";
-		   config = ''
-			   require("avante").setup({
-			   	provider = "claude",
-			   	providers = {
-			   		claude = {
-			   			endpoint = "https://api.anthropic.com",
-			   			auth_type = "max", -- use Claude Pro/Max subscription (browser OAuth), not an API key
-			   			model = "claude-opus-4-8",
-			   			extra_request_body = {
-			   				max_tokens = 64000,
-			   			},
-			   		},
-			   	},
-			   })
-		   ''; # or builtins.readFile ./plugins/avante.lua
-	   }
       # Optional: if you want a plugin manager inside Neovim
       # lazy-nvim
     ];
@@ -177,18 +210,28 @@
 	    -- optionally enable 24-bit colour
 	    vim.opt.termguicolors = true
 
-	    -- empty setup using defaults
-		require("nvim-tree").setup()
+		require("nvim-tree").setup({
+			update_focused_file = {
+				enable = true,
+			},
+		})
 
 		local builtin = require('telescope.builtin')
-		vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Telescope find files' })
-		vim.keymap.set('n', '<C-f>', builtin.live_grep, { desc = 'Telescope live grep' })
+		vim.keymap.set('n', '<C-p>', function()
+			builtin.find_files({ hidden = true })
+		end, { desc = 'Telescope find files' })
+		vim.keymap.set('n', '<C-f>', function()
+			builtin.live_grep({ additional_args = { '--hidden' } })
+		end, { desc = 'Telescope live grep' })
 		vim.keymap.set('n', '<C-t>', builtin.buffers, { desc = 'Telescope buffers' })
 		vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+		vim.keymap.set('n', '<C-e>', function()
+			builtin.commands()
+		end, { desc = 'Telescope commands' })
+		vim.keymap.set('n', '<F7>', builtin.lsp_references, { desc = 'Telescope buffers' })
 		
 		vim.lsp.enable('gopls')
 		vim.keymap.set('n', 'gd', vim.lsp.buf.definition)      -- Go to definition
-		vim.keymap.set('n', 'gr', vim.lsp.buf.references)       -- Find references
 		vim.keymap.set('n', 'K', vim.lsp.buf.hover)             -- Show documentation
 		vim.keymap.set('n', '<leader>rr', vim.lsp.buf.rename)   -- Rename symbol
 		vim.keymap.set('n', '<leader>aa', vim.lsp.buf.code_action) -- Code actions
@@ -196,6 +239,19 @@
 		vim.keymap.set('n', '<leader>f', function()
 				vim.lsp.buf.format({ async = true })
 		end)                                                     -- Format file
+
+		vim.opt.updatetime = 300
+
+		-- auto show diagnostic
+		vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+		  callback = function()
+			vim.diagnostic.open_float(nil, {
+			  focusable = false,
+			  scope = "cursor",
+			  close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+			})
+		  end,
+		})
     '';
     extraConfig = ''
         let mapleader = " "
